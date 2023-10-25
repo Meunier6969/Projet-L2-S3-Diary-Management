@@ -9,6 +9,7 @@ typedef struct s_d_cell
     struct s_d_cell **next;
 } t_d_cell; 
 
-t_d_cell createCell(int value, int height);
+t_d_cell* createCell(int value, int height);
+void displayCell(t_d_cell cell);
 
 #endif
