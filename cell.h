@@ -5,8 +5,10 @@
 typedef struct s_d_cell
 {
     int value;
-    struct s_d_cell *next_0;
-    struct s_d_cell *next_1;
+    int nbLevels;
+    struct s_d_cell **next;
 } t_d_cell; 
+
+t_d_cell createCell(int value, int height);
 
 #endif
