@@ -8,24 +8,45 @@ t_d_list createEmptyList(int nbLevels)
     t_d_list list;
     
     list.nbLevels = nbLevels;
-    list.heads = (t_d_cell**) calloc(nbLevels, sizeof(t_d_cell*));
+    list.heads = (t_d_cell**) malloc(nbLevels * sizeof(t_d_cell*));
+
+    for (size_t i = 0; i < nbLevels; i++)
+        list.heads[i] = NULL;
 
     return list;
 }
 
-void insertCellAtHead(t_d_list *list, int value, int levels)
+int insertCellAtHead(t_d_list *list, int value, int levels)
 {
-    // Plus Tard
+    if (list == NULL)
+    {
+        fprintf(stderr, "Can't add to an empty list");
+        return 1;
+    }
+
+    if (levels < 0) levels = 0;
+    if (levels >= list->nbLevels) levels = list->nbLevels;
+
+    t_d_cell* newCell = createCell(value, levels);
+
+    for (size_t i = 0; i < levels; i++)
+    {
+        newCell->next[i] = list->heads[i];
+        list->heads[i] = newCell;
+    }
+    
+    return 0;
 }
 
+// Returns 1 if the level asked is out-of-bounds, 0 otherwise
 int displayLevel(t_d_list list, int level)
 {
     if (level > list.nbLevels || level < 0)
     {
-        printf("Can't display a level that doesn't exist.");
+        fprintf(stderr, "Can't display a level that doesn't exist.");
         return 1;
     }
-    
+
     // [list head : 0] -> [69] -> NULL
 
     printf("[list head : %d] -> ", level);
