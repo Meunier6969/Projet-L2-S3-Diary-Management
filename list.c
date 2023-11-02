@@ -68,3 +68,32 @@ void displayAllLevels(t_d_list list)
     for (size_t i = 0; i < list.nbLevels; i++)
         displayLevel(list, i);
 }
+
+void displayAlign(t_d_list list)
+{
+    for (int i = 0; i < list.nbLevels; i++)
+    {
+        printf("[head : %d] -> ", i);
+        t_d_cell* current = list.heads[0];
+        while (current != NULL)
+        {
+            if (i < current->nbLevels)
+            {
+                //If the cell's level matches the current display level
+                printf("%d", current->value);
+                if (current->next[i] != NULL)
+                {
+                    printf(" -> ");
+                }
+            }
+            else
+            {
+                //If the cell's level is greater than the current display level, print arrow
+                printf("  -> ");
+            }
+            current = current->next[0]; 
+        }
+        printf(" -> NULL\n");
+    }
+}
+

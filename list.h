@@ -14,7 +14,7 @@ t_d_list createEmptyList(int nbLevels);
 int insertCellAtHead(t_d_list *list, int value, int levels);
 int displayLevel(t_d_list list, int level);
 void displayAllLevels(t_d_list list);
-// void displayAlign(t_d_list list);
+void displayAlign(t_d_list list); 
 void insertInOrder(t_d_list *list, int value);
 
 #endif
