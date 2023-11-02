@@ -3,3 +3,7 @@ A diary manager using intermediate data structures written by pure professionals
 
 # Run (nyoom)
 `bing chilling`
+
+# Run (The program, not nyoom)
+Go in the terminal, write `gcc main.c cell.c list.c`, press `Enter`
+Then type `.\a.exe`
