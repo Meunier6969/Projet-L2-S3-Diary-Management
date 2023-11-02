@@ -54,7 +54,7 @@ int displayLevel(t_d_list list, int level)
 
     while (current != NULL)
     {
-        printf("[%d] -> ", current->value);
+        printf("[%3d] -> ", current->value);
         current = current->next[level];
     }
     

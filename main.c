@@ -24,9 +24,9 @@ int main()
     insertCellAtHead(&list, 1, 1);
     insertCellAtHead(&list, 0, 0);
 
-    //displayAllLevels(list);
+    displayAllLevels(list);
 
-    displayAlign(list);
+    //displayAlign(list);
     
     return 0;
 }
