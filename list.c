@@ -80,20 +80,17 @@ void displayAlign(t_d_list list)
             if (i < current->nbLevels)
             {
                 //If the cell's level matches the current display level
-                printf("[%3d]", current->value);
-                if (current->next[i] != NULL)
-                {
-                    printf("  ->  ");
-                }
+                printf("[%4d]", current->value);
             }
             else
             {
                 //If the cell's level is greater than the current display level, print arrow
-                printf("  ->   ->  ");
+                printf("------");
             }
+            printf(" -> ");
             current = current->next[0]; 
         }
-        printf(" -> NULL\n");
+        printf("NULL\n");
     }
 }
 
