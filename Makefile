@@ -1,8 +1,8 @@
 CC = gcc
-FLAGS = -Wall
+FLAGS = -Wall -lm
 
 all: *.c
-	$(CC) $(FLAGS) *.c -o "out"
+	$(CC) *.c $(FLAGS) -o "out"
 
 clean:
 	rm out
