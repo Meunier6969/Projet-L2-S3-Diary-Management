@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "list.h"
 
+// Part 1
 t_d_list createEmptyList(int nbLevels)
 {
     t_d_list list;
@@ -38,7 +40,6 @@ int insertCellAtHead(t_d_list *list, int value, int levels)
     return 0;
 }
 
-// Returns 1 if the level asked is out-of-bounds, 0 otherwise
 int displayLevel(t_d_list list, int level)
 {
     if (level > list.nbLevels || level < 0)
@@ -94,3 +95,34 @@ void displayAlign(t_d_list list)
     }
 }
 
+// Part 2
+t_d_list createExampleList(int n)
+{
+    t_d_list list = createEmptyList(n);
+    int lenght = (int) (pow(2, n) - 1);
+    int level = 0;
+
+    for (size_t i = lenght; i > 0; i--)
+    {
+        // Probably not optimized but fuck itSS
+        level = 1;
+        for (size_t j = 1; j < n; j++)
+        {
+            if (i%(int)(pow(2, j)) == 0) level += 1;
+        }
+        
+        insertCellAtHead(&list, i, level);
+    }
+
+    return list;
+}
+
+int searchClassic(t_d_list list, int value)
+{
+    return 0;
+}
+
+int searchHigh(t_d_list list, int value)
+{
+    return 0;
+}
