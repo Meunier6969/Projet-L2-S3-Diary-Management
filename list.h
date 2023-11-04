@@ -20,7 +20,7 @@ void insertInOrder(t_d_list *list, int value);
 
 // Part 2
 t_d_list createExampleList(int n);
-int searchClassic(t_d_list list, int value);
-int searchHigh(t_d_list list, int value);
+t_d_cell *searchClassic(t_d_list list, int value);
+t_d_cell *searchHigh(t_d_list list, int value);
 
 #endif

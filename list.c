@@ -117,12 +117,23 @@ t_d_list createExampleList(int n)
     return list;
 }
 
-int searchClassic(t_d_list list, int value)
+t_d_cell *searchClassic(t_d_list list, int value)
 {
-    return 0;
+    if (list.heads == NULL) return NULL;
+
+    t_d_cell* current = list.heads[0];
+
+    do
+    {
+        if (current->value == value)
+            return current;    
+        current = current->next[0];
+    } while (current != NULL);
+
+    return current;
 }
 
-int searchHigh(t_d_list list, int value)
+t_d_cell *searchHigh(t_d_list list, int value)
 {
     return 0;
 }
