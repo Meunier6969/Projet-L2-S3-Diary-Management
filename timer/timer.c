@@ -36,7 +36,7 @@ char *getTimeAsString()
     // example : 001,123
 
     // use sprintf to write the string in a dynamically allocated buffer
-    char *buffer = (char *)malloc(10*sizeof(char));
+    char *buffer = (char *)malloc(30*sizeof(char));
     // use sprintf to write the string in a dynamically allocated buffer
     sprintf(buffer, "[%g] %03d,%03d", _timer._msecs, (int)(_timer._msecs)/1000, (int)(_timer._msecs)%1000);
 
