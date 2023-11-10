@@ -126,14 +126,36 @@ t_d_cell *searchClassic(t_d_list list, int value)
     do
     {
         if (current->value == value)
-            return current;    
-        current = current->next[0];
+            return current;
+
+        if (current->value > value)
+            break;
+        else
+            current = current->next[0];
+
     } while (current != NULL);
 
-    return current;
+    return NULL;
 }
 
 t_d_cell *searchHigh(t_d_list list, int value)
 {
-    return 0;
+    if (list.heads == NULL) return NULL;
+
+    int currentLevel = list.nbLevels - 1; 
+    t_d_cell *current = list.heads[currentLevel];
+
+    do
+    {
+        if (current->value == value)
+            return current;
+
+        if (currentLevel > 0 && current->value > value)
+            current = list.heads[--currentLevel];
+        else
+            current = current->next[0];
+
+    } while (current != NULL);
+
+    return NULL;
 }
