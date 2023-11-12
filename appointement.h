@@ -1,8 +1,6 @@
 #ifndef _INCLUDE_APPOINTEMENT
 #define _INCLUDE_APPOINTEMENT
 
-#define _MAX_STRING 100
-
 typedef struct s_d_appointment
 {
     int day;
@@ -18,4 +16,10 @@ typedef struct s_d_appointment
     char *purpose; // Information on the appointment. Can be long, so depends I guess.
 } t_d_appointment;
 
-#endif
+#endif  
+
+typedef struct 
+{
+    t_d_appointment appointement;
+    t_d_appointment* next;
+} listAppo;

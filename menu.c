@@ -19,5 +19,5 @@ void displayMenu()
 
 char *scanString(void)
 {
-    return 'a';
+    return malloc(0);
 }

@@ -3,8 +3,8 @@
 
 typedef struct s_d_contact
 {
-    char surname[30];
-    char firstName[30];
+    char *surname;
+    char *firstName;
 } t_d_contact;
 
 #endif

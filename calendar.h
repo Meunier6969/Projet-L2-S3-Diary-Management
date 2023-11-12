@@ -4,8 +4,6 @@
 #include "appointement.h"
 #include "contact.h"
 
-
-
 typedef struct s_d_calendar // I don't know if it's what's asked srry
 {
     t_d_contact contact;

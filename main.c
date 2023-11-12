@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
 
-#include "list.h"
+#include "calendar.h"
 #include "menu.h"
 // #include "timer/timer.h"
 
