@@ -31,4 +31,6 @@ typedef struct s_d_calendar //I don't know if it's what's asked srry
     int nbLevels;
 } t_d_calendar; 
 
+
+
 #endif

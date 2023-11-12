@@ -1,7 +1,8 @@
 #ifndef _INCLUDE_CELL
 #define _INCLUDE_CELL
 
-//Structure of a cell.
+// Part 1 & 2
+// Structure of a cell.
 typedef struct s_d_cell
 {
     int value;
@@ -12,7 +13,7 @@ typedef struct s_d_cell
 t_d_cell* createCell(int value, int height);
 void displayCell(t_d_cell cell);
 
-//Part 3
+// Part 3
 typedef struct s_d_contact
 {
     char surname[30];
