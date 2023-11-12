@@ -5,4 +5,4 @@ all: *.c
 	$(CC) *.c timer/*.c $(FLAGS) -o "out.exe"
 
 clean:
-	rm out.exe
+	rm out.exe log.txt
