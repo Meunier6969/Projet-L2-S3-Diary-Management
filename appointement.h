@@ -14,12 +14,8 @@ typedef struct s_d_appointment
     int lenght_minute;
 
     char *purpose; // Information on the appointment. Can be long, so depends I guess.
+
+    struct s_d_appointment* next;
 } t_d_appointment;
 
-#endif  
-
-typedef struct 
-{
-    t_d_appointment appointement;
-    t_d_appointment* next;
-} listAppo;
+#endif
