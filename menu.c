@@ -17,9 +17,7 @@ void displayMenu()
     printf("[9] Quit\n");
 }
 
-int getInput(void)
+char *scanString(void)
 {
-    printf("Enter a number : ");
-    // get le input
-    // potentiellement appeller la fonction necessaire mais jsp tho
+    return 'a';
 }
