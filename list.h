@@ -23,4 +23,12 @@ t_d_list createExampleList(int n);
 t_d_cell *searchClassic(t_d_list list, int value);
 t_d_cell *searchHigh(t_d_list list, int value);
 
+//Part 3
+typedef struct s_d_calendar //I don't know if it's what's asked srry
+{
+    t_d_contact contact;
+    t_d_appointment **appointments;
+    int nbLevels;
+} t_d_calendar; 
+
 #endif

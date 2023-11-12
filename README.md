@@ -5,5 +5,5 @@ A diary manager using intermediate data structures written by pure professionals
 `bing chilling`
 
 # Run (The program, not nyoom)
-Go in the terminal, write `gcc main.c cell.c list.c`, press `Enter`
+Go in the terminal, write `gcc main.c cell.c list.c timer.c`, press `Enter`
 Then type `.\a.exe`
