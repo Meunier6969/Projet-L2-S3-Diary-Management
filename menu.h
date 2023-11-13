@@ -6,4 +6,7 @@
 void displayMenu(void);
 char *scanString(void);
 
+//All the menu because life isn't hard enough as it is.
+void menuCreateContact();
+
 #endif
