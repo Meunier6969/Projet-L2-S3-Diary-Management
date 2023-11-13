@@ -55,3 +55,4 @@ dkms.conf
 .vscode
 .idea
 *.txt
+a.exe.stackdump
