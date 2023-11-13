@@ -1,12 +1,8 @@
 #include <stdio.h>
-<<<<<<< HEAD:src/menu.c
-#include "../includes/menu.h"
-=======
 #include <stdlib.h>
 #include <string.h>
 
-#include "menu.h"
->>>>>>> 32094081111709b6165e95b854586a7d1762dc07:menu.c
+#include "../includes/menu.h"
 
 void displayMenu()
 {
