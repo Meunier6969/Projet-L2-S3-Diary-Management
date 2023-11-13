@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../includes/calendar.h"
 #include "../includes/menu.h"
@@ -12,7 +13,8 @@ int main()
     while (run == 1)
     {
         displayMenu();
-        choice = getchar();
+        fflush(stdin);
+        scanf("%c", &choice);
         switch (choice)
         {
             case '1':
