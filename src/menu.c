@@ -30,7 +30,7 @@ char *scanString()
 void menuCreateContact()
 {
     int run=1;
-    int runtwo=1;
+    char verif[30];
     char name[30];
     char surname[30];
     while (run==1)
@@ -54,7 +54,8 @@ void menuCreateContact()
                 printf("\n+-----------------------+");
                 printf("\nThe operation was a sucess, contact [%s] [%s] has been created.",name,surname);
                 printf("\n[Ready to continue ?]");
-                getchar();
+                fflush(stdin);
+                scanf("%s",verif);
                 run=0;
             }
             else if (strcmp(surname,"quit")==0)

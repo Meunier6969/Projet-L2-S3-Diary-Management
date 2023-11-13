@@ -18,6 +18,9 @@ int main()
             case '1':
                 menuCreateContact();
                 break;
+            case '9':
+                run=0;
+                break;
         }
     }
     return 0;
