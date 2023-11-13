@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "calendar.h"
-#include "menu.h"
+#include "../includes/calendar.h"
+#include "../includes/menu.h"
 // #include "timer/timer.h"
 
 int main()

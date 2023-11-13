@@ -2,7 +2,7 @@ CC = gcc
 FLAGS = -Wall -lm
 
 all: *.c
-	$(CC) *.c timer/*.c $(FLAGS) -o "out.exe"
+	$(CC) include/*.c $(FLAGS) -o "out.exe"
 
 clean:
 	rm out.exe log.txt

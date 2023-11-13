@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "menu.h"
+#include "../includes/menu.h"
 
 void displayMenu()
 {
