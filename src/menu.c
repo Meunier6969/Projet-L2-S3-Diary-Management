@@ -32,7 +32,7 @@ char *scanString()
 void menuCreateContact()
 {
     int run=1;
-    char verif;
+    char verif[20];
     char name[30];
     char surname[30];
     while (run==1)
