@@ -20,6 +20,9 @@ int main()
             case '1':
                 menuCreateContact();
                 break;
+            case '2':
+                menuCreateAppointment();
+                break;
             case '9':
                 run=0;
                 break;
