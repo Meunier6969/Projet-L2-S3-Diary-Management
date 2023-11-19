@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "cell.h"
+#include "../includes/cell.h"
 
 t_d_cell* createCell(int value, int height)
 {

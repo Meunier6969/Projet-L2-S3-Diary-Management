@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "list.h"
+#include "../includes/list.h"
 
 // Part 1
 t_d_list createEmptyList(int nbLevels)
