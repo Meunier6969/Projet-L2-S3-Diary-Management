@@ -176,7 +176,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
         }
         else if (strcmp(name,"quit")==0)
         {
-             printf("\033[H\033[J");
+            printf("\033[H\033[J");
             printf("\n+------------------------+");
             printf("\nYou choose to quit. Byebye.");
             printf("\n+------------------------+");
@@ -189,3 +189,24 @@ void menuDeleteAppointment()
 {
     printf("no");
 }
+
+void menuViewContactAppointment()
+{
+    printf("ok");
+}
+
+void menuSearchContact()
+{
+    printf("will do");
+}
+
+void menuSaveFile()
+{
+    printf("Will maybe do. or no.");
+}
+
+void menuLoadFile()
+{
+    printf("Dunno how but just");
+}
+void menuInfo();

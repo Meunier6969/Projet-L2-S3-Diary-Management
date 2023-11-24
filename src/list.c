@@ -159,3 +159,58 @@ t_d_cell *searchHigh(t_d_list list, int value)
 
     return NULL;
 }
+
+void insertInOrder(t_d_list *list, int value, int level)
+{
+    level-=1;
+    if (list == NULL || level < 0 || level >= list->nbLevels)
+    {
+        fprintf(stderr, "Invalid list or level");
+        return;
+    }
+
+    // Special case: If the list is empty or the new value is less than the head value
+    if (list->heads[0] == NULL || value < list->heads[0]->value)
+    {
+        // Insert at all levels up to the specified level
+        for (int i = 0; i <= level; i++)
+        {
+            t_d_cell* newCell = createCell(value, list->nbLevels);
+
+            newCell->next[i] = list->heads[i];
+            list->heads[i] = newCell;
+        }
+
+        return;
+    }
+
+    // Traverse the list to find the appropriate position for insertion
+    for (int i = 0; i <= level; i++)
+    {
+        t_d_cell* current = list->heads[i];
+        t_d_cell* prev = NULL;
+
+        while (current != NULL && current->value < value)
+        {
+            prev = current;
+            current = current->next[i];
+        }
+
+        // Insert the new cell into the appropriate position
+        if (prev != NULL)
+        {
+            // Insert in the middle
+            t_d_cell* newCell = createCell(value, list->nbLevels);
+            newCell->next[i] = prev->next[i];
+            prev->next[i] = newCell;
+        }
+        else
+        {
+            // Insert at the beginning
+            t_d_cell* newCell = createCell(value, list->nbLevels);
+            newCell->next[i] = list->heads[i];
+            list->heads[i] = newCell;
+        }
+    }
+}
+
