@@ -1,24 +1,22 @@
 #ifndef _INCLUDE_APPOINTEMENT
 #define _INCLUDE_APPOINTEMENT
 
+#include "datetime.h"
+
 typedef struct s_d_appointment
 {
-    int day;
-    int month;
-    int year; // In it's entirety, not just 23, but 2023 (In case we go back in time u know)
+    t_d_date date;
 
-    int app_hour; // Appointment time
-    int app_minute;
+    t_d_length appointmentTime;
 
-    int lenght_hour; // Length of appointment
-    int lenght_minute;
+    t_d_length appointmentLength;
 
     char *purpose; // Information on the appointment. Can be long, so depends I guess.
 
     struct s_d_appointment* next;
 } t_d_appointment;
 
-t_d_appointment* createAppointment(int, int, int, int, int, int, int, char*);
+t_d_appointment* createAppointment(t_d_date, t_d_length, t_d_length, char*);
 
 void deleteAppointment();
 void addNextAppointment();
