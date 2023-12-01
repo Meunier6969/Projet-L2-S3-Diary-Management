@@ -12,9 +12,10 @@ int main()
     t_d_contact* bing = createContact("Bing", "Chilling");
     t_d_calendar* cal = createCalendar(*bing);
 
-    displayCalendar(*cal);
-    deleteCalendar(cal);
-    displayCalendar(*cal);
+    displayCalendar(cal);
+    deleteCalendar(&cal);
+    deleteContact(bing);
+    displayCalendar(cal);
 
     return 0;
 }

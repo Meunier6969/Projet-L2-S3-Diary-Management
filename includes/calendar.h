@@ -13,8 +13,8 @@ typedef struct s_d_calendar
 } t_d_calendar;
 
 t_d_calendar* createCalendar(t_d_contact);
-void deleteCalendar(t_d_calendar*);
-void displayCalendar(t_d_calendar);
+void deleteCalendar(t_d_calendar**);
+void displayCalendar(t_d_calendar*);
 
 void addAppointement(t_d_calendar, t_d_appointment);
 

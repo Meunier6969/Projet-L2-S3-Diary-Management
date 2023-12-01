@@ -26,16 +26,24 @@ t_d_calendar* createCalendar(t_d_contact contact)
     return newCalendar;
 }
 
-void deleteCalendar(t_d_calendar* calendar)
+void deleteCalendar(t_d_calendar** calendar)
 {
-    free(calendar->key);
-    free(calendar);
+    free((*calendar)->key);
+    free((*calendar)->firstAppointment);
+    free(*calendar);
+    *calendar = NULL;
 }
 
-void displayCalendar(t_d_calendar calendar)
+void displayCalendar(t_d_calendar* calendar)
 {
-    displayContact(calendar.contact);
-    printf("Known as [%s]\n", calendar.key);
+    if (calendar == NULL)
+    {
+        printf("Calendar doesn't exist.\n");
+        return;
+    }
+
+    displayContact(calendar->contact);
+    printf("Known as [%s]\n", calendar->key);
     printf("Appointements :\n");
 }
 
