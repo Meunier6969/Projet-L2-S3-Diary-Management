@@ -9,13 +9,15 @@
 
 int main()
 {
-    t_d_contact* bing = createContact("Bing", "Chilling");
+    char* name;
+    name = scanString(30);
+
+    t_d_contact *bing = createContact(name, "Chilling");
     t_d_calendar* cal = createCalendar(*bing);
 
     displayCalendar(cal);
     deleteCalendar(&cal);
     deleteContact(bing);
-    displayCalendar(cal);
 
     return 0;
 }
