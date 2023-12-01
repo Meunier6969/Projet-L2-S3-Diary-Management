@@ -3,8 +3,6 @@
 #include <string.h>
 #include "../includes/menu.h"
 
-
-
 void displayMenu()
 {
     printf("\033[H\033[J");
@@ -24,17 +22,22 @@ void displayMenu()
     printf("\n-> ");
 }
 
-char *scanString()
+char *scanString(int lenght)
 {
-    return malloc(0);
+    char* buffer = malloc(lenght * sizeof(char));
+
+    fgets(buffer, lenght, stdin);
+    buffer[strcspn(buffer, "\n")] = '\0'; // Remove trailing '\n'
+    
+    return buffer;
 }
 
 void menuCreateContact()
 {
     int run=1;
-    char verif[20];
-    char name[30];
-    char surname[30];
+    char* verif;
+    char* name;
+    char* surname;
     while (run==1)
     {
         printf("\033[H\033[J");
@@ -44,7 +47,7 @@ void menuCreateContact()
         printf("\n+---------------------------------------+");
         printf("\n[Enter 'quit' to quit to the main menu.]");
         printf("\n-> ");
-        scanf("%s",name); //FAUDRA REMPLACER PAR SCAN
+        name = scanString(30);
         if (strcmp(name,"quit")!=0)
         {
             printf("\033[H\033[J");
@@ -53,7 +56,7 @@ void menuCreateContact()
             printf("\n+------------------------------------------------------------+");
             printf("\n[Enter 'quit' to quit to the previous menu.]");
             printf("\n-> ");
-            scanf("%s",surname); //FAUDRA REMPLACER PAR SCAN
+            surname = scanString(30);
             if (strcmp(surname,"quit")!=0)
             {
                 printf("\033[H\033[J");
@@ -61,7 +64,7 @@ void menuCreateContact()
                 printf("\nThe operation was a sucess, contact [%s] [%s] has been created.",name,surname);
                 printf("\n+-----------------------------------------------------------------+");
                 printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
-                scanf("%s", &verif);
+                verif = scanString(20);
                 //FAUDRA METTRE LA RECUPERATION DE NOM ET SURNOM ICI OU DIRECT LA FONCTION DE CREATION ?
             }
             else if (strcmp(surname,"quit")==0)

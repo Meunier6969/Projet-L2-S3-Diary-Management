@@ -4,7 +4,7 @@
 #define _MAX_LENGTH 100
 
 void displayMenu(void);
-char *scanString(void);
+char *scanString(int);
 
 //All the menu because life isn't hard enough as it is.
 void menuCreateContact();
