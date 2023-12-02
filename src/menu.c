@@ -187,19 +187,37 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     }
 }
 
-void menuDeleteAppointment()
-{
-    printf("no");
-}
-
-void menuViewContactAppointment()
-{
-    printf("ok");
-}
 
 void menuSearchContact()
 {
-    printf("will do");
+    int menurun=1;
+    int i=0;
+    char letter;
+    char search[30];
+    printf("\033[H\033[J");
+    printf("\n+------------------------------------------------+");
+    printf("\nYou choose to search for a contact.");
+    printf("\nEnter it's name down there one letter at a time :");
+    printf("\n+------------------------------------------------+");
+    printf("\n-> ");
+    fflush(stdin);
+    letter=getchar();
+    search[0]=letter;
+    while (menurun==1)
+    {
+        if (letter=='.'){menurun=0;}
+        i+=1;
+        printf("\033[H\033[J");
+        printf("\n+-----------------------------------------------------------------+");
+        printf("\nEnter the name down there one letter at a time. Write '.' to quit.");
+        printf("\nNumber of names found yet [After entering 3 letters]"); 
+        //Guess we'll do things here
+        printf("\n+-----------------------------------------------------------------+");
+        printf("\n-> %s ",search);
+        fflush(stdin);
+        letter=getchar();
+        search[i]=letter;
+    }
 }
 
 void menuSaveFile()
