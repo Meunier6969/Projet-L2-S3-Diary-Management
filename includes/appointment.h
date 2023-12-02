@@ -19,6 +19,8 @@ typedef struct s_d_appointment
 t_d_appointment* createAppointment(t_d_date, t_d_length, t_d_length, char*);
 
 void deleteAppointment();
-void addNextAppointment();
+void addNextAppointment(t_d_appointment*, t_d_appointment*);
+
+void showApp(t_d_appointment* head);
 
 #endif
