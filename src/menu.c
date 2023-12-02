@@ -11,13 +11,11 @@ void displayMenu()
     printf("\n+-  Welcome, what would you like to do ?  -+");
     printf("\n[1] Create a Contact");
     printf("\n[2] Create an Appointment");
-    printf("\n[3] Delete an Appointment");
-    printf("\n[4] View Contact Appointment");
-    printf("\n[5] Search for a Contact");
-    printf("\n[6] Save the Appointment File");
-    printf("\n[7] Load Appointment File");
-    printf("\n[8] Info");
-    printf("\n[9] Quit");
+    printf("\n[3] Search for a Contact"); //Will be used to search for a contact, see it's appointment, but also delete them, easier than so many function
+    printf("\n[4] Save the Appointment File");
+    printf("\n[5] Load Appointment File");
+    printf("\n[6] Info");
+    printf("\n[7] Quit");
     printf("\n+------------------------------------------+");
     printf("\n-> ");
 }
@@ -34,11 +32,11 @@ char *scanString(int lenght)
 
 void menuCreateContact()
 {
-    int run=1;
-    char* verif;
-    char* name;
-    char* surname;
-    while (run==1)
+    int menurun=1;
+    char verif[30];
+    char name[30];
+    char surname[30];
+    while (menurun==1)
     {
         printf("\033[H\033[J");
         printf("\n+---------------------------------------+");
@@ -47,7 +45,7 @@ void menuCreateContact()
         printf("\n+---------------------------------------+");
         printf("\n[Enter 'quit' to quit to the main menu.]");
         printf("\n-> ");
-        name = scanString(30);
+        scanf("%s",name);
         if (strcmp(name,"quit")!=0)
         {
             printf("\033[H\033[J");
@@ -56,7 +54,7 @@ void menuCreateContact()
             printf("\n+------------------------------------------------------------+");
             printf("\n[Enter 'quit' to quit to the previous menu.]");
             printf("\n-> ");
-            surname = scanString(30);
+            scanf("%s",surname);
             if (strcmp(surname,"quit")!=0)
             {
                 printf("\033[H\033[J");
@@ -64,7 +62,8 @@ void menuCreateContact()
                 printf("\nThe operation was a sucess, contact [%s] [%s] has been created.",name,surname);
                 printf("\n+-----------------------------------------------------------------+");
                 printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
-                verif = scanString(20);
+                scanf("%s",verif);
+                menurun=0;
                 //FAUDRA METTRE LA RECUPERATION DE NOM ET SURNOM ICI OU DIRECT LA FONCTION DE CREATION ?
             }
             else if (strcmp(surname,"quit")==0)
@@ -81,7 +80,7 @@ void menuCreateContact()
             printf("\n+------------------------+");
             printf("\nYou choose to quit. Bybye.");
             printf("\n+------------------------+");
-            run=0;
+            menurun=0;
         }
     }
 }
@@ -205,17 +204,115 @@ void menuSearchContact()
 
 void menuSaveFile()
 {
-    printf("Will maybe do. or no.");
+    int menurun=1;
+    char answer;
+    char verif[30];
+    while (menurun==1)
+    {
+        printf("\033[H\033[J");
+        printf("\n+-------------------------------------------+");
+        printf("\nYou choose to save your calendar.");
+        printf("\nEnter either [y] to save or [n] to go back.");
+        printf("\n+-------------------------------------------+");
+        printf("\n-> ");
+        fflush(stdin);
+        while ((answer = getchar()) == '\n');
+        if (answer == 'y')
+        {
+            printf("\033[H\033[J");
+            printf("\n+---------------------------------------------+");
+            printf("\nSuccessfully saved the calendar in PLACEHOLDER.");           //PLACEHOLDER HERE
+            printf("\nEnter anything to continue.");
+            printf("\n+---------------------------------------------+");
+            printf("\n-> ");
+            scanf("%s", &verif);
+            //Does the thing
+            menurun=0;
+        }
+        else if (answer != 'y')
+        {
+            menurun=0;
+        }
+    }
 }
 
 void menuLoadFile()
 {
-    printf("Dunno how but just");
+    int menurun=1;
+    char answer;
+    char verif[30];
+    while (menurun==1)
+    {
+        printf("\033[H\033[J");
+        printf("\n+-----------------------------------------------+");
+        printf("\nYou choose to load the calendar from PLACEHOLDER.");
+        printf("\nEnter either [y] to load or [n] to go back.");
+        printf("\n+-----------------------------------------------+");
+        printf("\n-> ");
+        fflush(stdin);
+        while ((answer = getchar()) == '\n');
+        if (answer == 'y')
+        {
+            printf("\033[H\033[J");
+            printf("\n+-------------------------------+");
+            printf("\nSuccessfully loaded the calendar.");           //PLACEHOLDER HERE
+            printf("\nEnter anything to continue.");
+            printf("\n+-------------------------------+");
+            printf("\n-> ");
+            scanf("%s", &verif);
+            //Does the thing
+            menurun=0;
+        }
+        else if (answer != 'y')
+        {
+            menurun=0;
+        }
+    }
 }
 
 void menuInfo()
 {
-    printf("Things done by some people i gess ?");
+    int run = 1;
+    char choice;
+    char verif[30];
+    while (run == 1)
+    {
+        printf("\033[H\033[J");
+        printf("\n+----------------------------------------------------+");
+        printf("\n+- What do you wish to learn about ? -+");
+        printf("\n[1] Credits");
+        printf("\n[2] Calculation Time");
+        printf("\n[3] Quit the Info Menu");
+        printf("\n+---------------------------------------------------+");
+        printf("\n-> ");
+        fflush(stdin);
+        scanf("%c", &choice);
+        switch (choice)
+        {
+            case '1':
+                printf("\033[H\033[J");
+                printf("\n+------------------------------------------------------------+");
+                printf("\nMade for an Efrei Project by :");           
+                printf("\n-> Antoine IGLESIAS-TALLON (Still MIA)");
+                printf("\n-> Antoine MEUNIER (No link to the school principal (yet...))");
+                printf("\n-> Nassim AININE (Not an Antoine)");
+                printf("\n+------------------------------------------------------------+");
+                printf("\n-> ");
+                scanf("%s", verif);
+                break;
+            case '2':
+                printf("\033[H\033[J");
+                printf("\n+--------------------------------------------------+");
+                printf("\nYeah calculations, yeahhhh");
+                printf("\n+---------------------------------------------------+");
+                printf("\n-> ");
+                scanf("%s", verif);
+                break;
+            case '3':
+                run=0;
+                break;
+        }
+    }
 }
 
 
