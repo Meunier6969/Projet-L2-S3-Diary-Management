@@ -62,7 +62,8 @@ void menuCreateContact()
                 printf("\nThe operation was a sucess, contact [%s] [%s] has been created.",name,surname);
                 printf("\n+-----------------------------------------------------------------+");
                 printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
-                scanf("%s",verif);
+                fflush(stdin);
+                while( getchar() != '\n' );
                 menurun=0;
                 //FAUDRA METTRE LA RECUPERATION DE NOM ET SURNOM ICI OU DIRECT LA FONCTION DE CREATION ?
             }
@@ -103,7 +104,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
         printf("\n+------------------------------------------------------------------+");
         printf("\n[Enter 'quit' to quit to the main menu.]");
         printf("\n-> ");
-        scanf("%s_%s", name,surname); //WILL NEED A SPECIAL FUNCTION CAUSE I DONT WANT TO ADD ANOTHER FRIKING IF
+        scanf("%s_%s", name, surname); //WILL NEED A SPECIAL FUNCTION CAUSE I DONT WANT TO ADD ANOTHER FRIKING IF
         if (strcmp(name,"quit")!=0 && strcmp(surname,"quit")!=0) //WILL ALSO NEED TO CHECK IF CONTACT EXISTS
         {
             printf("\033[H\033[J");
@@ -148,7 +149,8 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
                         printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", day, month, year, dhour, dmin, lhour, lmin, purpose);
                         printf("\n+---------------------------------------------------------------------------------------+");
                         printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
-                        scanf("%s", &verif);
+                        fflush(stdin);
+                        while( getchar() != '\n' );
                         run=0;
                         //WHERE WE WILL GET THE VALUES
                     }
@@ -243,11 +245,10 @@ void menuSaveFile()
             printf("\nEnter anything to continue.");
             printf("\n+---------------------------------------------+");
             printf("\n-> ");
-            scanf("%s", &verif);
+            scanf("%s", verif);
             //Does the thing
-            menurun=0;
         }
-        else if (answer != 'y')
+        else if (answer == 'n')
         {
             menurun=0;
         }
@@ -277,11 +278,11 @@ void menuLoadFile()
             printf("\nEnter anything to continue.");
             printf("\n+-------------------------------+");
             printf("\n-> ");
-            scanf("%s", &verif);
+            scanf("%s", verif);
             //Does the thing
             menurun=0;
         }
-        else if (answer != 'y')
+        else if (answer == 'n')
         {
             menurun=0;
         }
@@ -316,7 +317,8 @@ void menuInfo()
                 printf("\n-> Nassim AININE (Not an Antoine)");
                 printf("\n+------------------------------------------------------------+");
                 printf("\n-> ");
-                scanf("%s", verif);
+                fflush(stdin);
+                while( getchar() != '\n' );
                 break;
             case '2':
                 printf("\033[H\033[J");
@@ -324,7 +326,8 @@ void menuInfo()
                 printf("\nYeah calculations, yeahhhh");
                 printf("\n+---------------------------------------------------+");
                 printf("\n-> ");
-                scanf("%s", verif);
+                fflush(stdin);
+                while( getchar() != '\n' );
                 break;
             case '3':
                 run=0;
