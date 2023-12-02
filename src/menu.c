@@ -212,4 +212,10 @@ void menuLoadFile()
 {
     printf("Dunno how but just");
 }
-void menuInfo();
+
+void menuInfo()
+{
+    printf("Things done by some people i gess ?");
+}
+
+
