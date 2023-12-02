@@ -7,6 +7,27 @@
 // #include "../includes/cell.h"
 // #include "timer/timer.h"
 
+void test()
+{
+    t_d_date date = {1,2,3};
+    t_d_length len = {4, 5};
+
+    t_d_appointment* woo = createAppointment(date, len, len, "woddo");
+
+    t_d_appointment* next1 = createAppointment(date, len, len, "wsdadsdaso");
+    t_d_appointment* next2 = createAppointment(date, len, len, "chillng");
+    t_d_appointment* next3 = createAppointment(date, len, len, "bing");
+
+    addNextAppointment(woo, next1);
+    addNextAppointment(woo, next2);
+    addNextAppointment(woo, next3);
+
+    showApp(woo);
+    
+    fflush(stdin);
+    while( getchar() != '\n' );
+}
+
 int main()
 {
     int run = 1;
@@ -19,17 +40,7 @@ int main()
         switch (choice)
         {
             case '0':
-                char out;
-                char* name;
-                name = scanString(30);
-
-                t_d_contact *bing = createContact(name, "Chilling");
-                t_d_calendar* cal = createCalendar(*bing);
-
-                displayCalendar(cal);
-                deleteCalendar(&cal);
-                deleteContact(bing);
-                scanf("%c", &out);
+                test();
                 break;
 
             case '1':
