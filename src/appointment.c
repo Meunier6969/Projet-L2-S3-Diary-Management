@@ -53,7 +53,7 @@ void showApp(t_d_appointment* head)
 
     do
     {
-        printf("------------------\n");
+        printf("+-----------------+\n");
         printf("Date : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s\n",
             curapp->date.day, curapp->date.month, curapp->date.year,
             curapp->appointmentTime.hours, curapp->appointmentTime.minutes,
