@@ -58,9 +58,9 @@ void menuCreateContact()
             if (strcmp(surname,"quit")!=0)
             {
                 printf("\033[H\033[J");
-                printf("\n+-----------------------------------------------------------------+");
+                printf("\n+-------------------------------------------------------------+");
                 printf("\nThe operation was a sucess, contact [%s] [%s] has been created.",name,surname);
-                printf("\n+-----------------------------------------------------------------+");
+                printf("\n+-------------------------------------------------------------+");
                 printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
                 fflush(stdin);
                 while( getchar() != '\n' );
@@ -98,10 +98,10 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     while (run==1)
     {
         printf("\033[H\033[J");
-        printf("\n+------------------------------------------------------------------+");
+        printf("\n+------------------------------------------------------------------------------+");
         printf("\nYou choose to create an appointment.");
         printf("\nPlease enter the name of the contact's appointment in the format [name_surname].");
-        printf("\n+------------------------------------------------------------------+");
+        printf("\n+------------------------------------------------------------------------------+");
         printf("\n[Enter 'quit' to quit to the main menu.]");
         printf("\n-> ");
         scanf("%s_%s", name, surname); //WILL NEED A SPECIAL FUNCTION CAUSE I DONT WANT TO ADD ANOTHER FRIKING IF
@@ -127,27 +127,27 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
                 if ((dhour >=0 && dhour <24) && (dmin >= 0 && dmin < 60))
                 {
                     printf("\033[H\033[J");
-                    printf("\n+--------------------------------------------------------------------------------------------+");
+                    printf("\n+-----------------------------------------------------------------------------------------+");
                     printf("\nYou entered the time %d:%d, please enter the hour of the appointment in the format [xx:xx].",dhour,dmin);
-                    printf("\n+--------------------------------------------------------------------------------------------+");
+                    printf("\n+-----------------------------------------------------------------------------------------+");
                     printf("\n[Enter a negative value such as [-1] to go back to the very start.]");
                     printf("\n-> ");
                     scanf("%d:%d",&lhour,&lmin);
                     if ((lhour >=0 && lhour <24) && (lmin >= 0 && lmin < 60))
                     {
                         printf("\033[H\033[J");
-                        printf("\n+--------------------------------------------------------------------------------------------+");
+                        printf("\n+------------------------------------------------------------------------+");
                         printf("\nYou entered the length %d:%d, please enter the purpose of the appointment.",lhour,lmin);
                         printf("\nThe format to be used is [xxx_xxxxx_xxxx] in 100 characters (Need fixin')");
-                        printf("\n+--------------------------------------------------------------------------------------------+");
+                        printf("\n+------------------------------------------------------------------------+");
                         printf("\n[Enter 'quit' to quit to the very start.]");
                         printf("\n-> ");
                         scanf("%s",purpose);
                         printf("\033[H\033[J");
-                        printf("\n+---------------------------------------------------------------------------------------+");
+                        printf("\n+-----------------------------------------------------------------------+");
                         printf("\nThe operation was a sucess, the following appointment has been created :");
                         printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", day, month, year, dhour, dmin, lhour, lmin, purpose);
-                        printf("\n+---------------------------------------------------------------------------------------+");
+                        printf("\n+-----------------------------------------------------------------------+");
                         printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
                         fflush(stdin);
                         while( getchar() != '\n' );
@@ -157,17 +157,17 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
                     else if (strcmp(purpose,"quit")==0)
                     {
                         printf("\033[H\033[J");
-                        printf("\n+---------------------------------------------------------------+");
+                        printf("\n+-----------------------------------------------------------+");
                         printf("\nYou choose to quit, you will now go back to the first screen.");
-                        printf("\n+---------------------------------------------------------------+");
+                        printf("\n+-----------------------------------------------------------+");
                     }
                 }
                 else
                 {
                     printf("\033[H\033[J");
-                    printf("\n+---------------------------------------------------------------+");
+                    printf("\n+-----------------------------------------------------------+");
                     printf("\nYou choose to quit, you will now go back to the first screen.");
-                    printf("\n+---------------------------------------------------------------+");
+                    printf("\n+-----------------------------------------------------------+");
                 }
             }
             else
@@ -181,9 +181,9 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
         else if (strcmp(name,"quit")==0)
         {
             printf("\033[H\033[J");
-            printf("\n+------------------------+");
+            printf("\n+-------------------------+");
             printf("\nYou choose to quit. Byebye.");
-            printf("\n+------------------------+");
+            printf("\n+-------------------------+");
             run=0;
         }
     }
@@ -197,10 +197,10 @@ void menuSearchContact()
     char letter;
     char search[30];
     printf("\033[H\033[J");
-    printf("\n+------------------------------------------------+");
+    printf("\n+-----------------------------------------------+");
     printf("\nYou choose to search for a contact.");
     printf("\nEnter it's name down there one letter at a time :");
-    printf("\n+------------------------------------------------+");
+    printf("\n+-----------------------------------------------+");
     printf("\n-> ");
     fflush(stdin);
     letter=getchar();
@@ -210,11 +210,11 @@ void menuSearchContact()
         if (letter=='.'){menurun=0;}
         i+=1;
         printf("\033[H\033[J");
-        printf("\n+-----------------------------------------------------------------+");
+        printf("\n+----------------------------------------------------------------+");
         printf("\nEnter the name down there one letter at a time. Write '.' to quit.");
         printf("\nNumber of names found yet [After entering 3 letters]"); 
         //Guess we'll do things here
-        printf("\n+-----------------------------------------------------------------+");
+        printf("\n+----------------------------------------------------------------+");
         printf("\n-> %s ",search);
         fflush(stdin);
         letter=getchar();
@@ -230,10 +230,10 @@ void menuSaveFile()
     while (menurun==1)
     {
         printf("\033[H\033[J");
-        printf("\n+-------------------------------------------+");
+        printf("\n+-----------------------------------------+");
         printf("\nYou choose to save your calendar.");
         printf("\nEnter either [y] to save or [n] to go back.");
-        printf("\n+-------------------------------------------+");
+        printf("\n+-----------------------------------------+");
         printf("\n-> ");
         fflush(stdin);
         while ((answer = getchar()) == '\n');
@@ -293,36 +293,38 @@ void menuInfo()
 {
     int run = 1;
     char choice;
-    char verif[30];
+    char verif;
     while (run == 1)
     {
         printf("\033[H\033[J");
-        printf("\n+----------------------------------------------------+");
+        printf("\n+-------------------------------------+");
         printf("\n+- What do you wish to learn about ? -+");
         printf("\n[1] Credits");
         printf("\n[2] Calculation Time");
         printf("\n[3] Quit the Info Menu");
-        printf("\n+---------------------------------------------------+");
+        printf("\n+-------------------------------------+");
         printf("\n-> ");
         fflush(stdin);
         scanf("%c", &choice);
+        fflush(stdin);
         switch (choice)
         {
             case '1':
                 printf("\033[H\033[J");
-                printf("\n+------------------------------------------------------------+");
+                printf("\n+-----------------------------------------------------------+");
                 printf("\nMade for an Efrei Project by :");           
                 printf("\n-> Antoine IGLESIAS-TALLON (Still MIA)");
                 printf("\n-> Antoine MEUNIER (No link to the school principal (yet...))");
                 printf("\n-> Nassim AININE (Not an Antoine)");
-                printf("\n+------------------------------------------------------------+");
+                printf("\n+-----------------------------------------------------------+");
                 printf("\n-> ");
                 fflush(stdin);
                 while( getchar() != '\n' );
+                fflush(stdin);
                 break;
             case '2':
                 printf("\033[H\033[J");
-                printf("\n+--------------------------------------------------+");
+                printf("\n+---------------------------------------------------+");
                 printf("\nYeah calculations, yeahhhh");
                 printf("\n+---------------------------------------------------+");
                 printf("\n-> ");
