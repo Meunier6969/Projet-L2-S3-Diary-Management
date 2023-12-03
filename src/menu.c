@@ -11,7 +11,7 @@ void displayMenu()
     printf("\033[H\033[J");
     printf("\n+-------------Diary Managment--------------+");
     printf("\n+------------------------------------------+");
-    printf("\n+-  Welcome, what would you like to do ?  -+");
+    printf("\n+- \033[1;35m Welcome, what would you like to do ? \033[1;0m -+");
     printf("\n[1] Create a Contact");
     printf("\n[2] Create an Appointment");
     printf("\n[3] Search for a Contact"); //Will be used to search for a contact, see it's appointment, but also delete them, easier than so many function
@@ -63,7 +63,7 @@ void menuCreateContact()
         {
             printf("\033[H\033[J");
             printf("\n+------------------------------------------------------------+");
-            printf("\nYou entered [%s], please enter the surname of the contact now.",name);
+            printf("\nYou entered [\033[1;35m%s\033[1;0m], please enter the surname of the contact now.",name);
             printf("\n+------------------------------------------------------------+");
             printf("\n[Enter 'quit' to quit to the previous menu.]");
             printf("\n-> ");
