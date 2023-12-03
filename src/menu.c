@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../includes/menu.h"
+#include "../includes/datetime.h"
+#include "../includes/contact.h"
+#include "../includes/appointment.h"
 
 void displayMenu()
 {
@@ -18,6 +21,16 @@ void displayMenu()
     printf("\n[7] Quit");
     printf("\n+------------------------------------------+");
     printf("\n-> ");
+}
+
+void menuQuit()
+{
+    printf("\033[H\033[J");
+    printf("\n+---------------------------------------------------------------+");
+    printf("\nYou choose to quit, press Enter to continue.");
+    printf("\n+---------------------------------------------------------------+");
+    fflush(stdin);
+    while( getchar() != '\n' );
 }
 
 char *scanString(int lenght)
@@ -86,15 +99,50 @@ void menuCreateContact()
     }
 }
 
+/*
+void newCA()
+{
+    void* bing = NULL;
+    t_d_date date;
+    t_d_length length, time;
+    char* purpose;
+
+    printf("create appointement");
+    printf("entre name and surname");
+    scanf("%s %s", bing ,bing);
+
+    printf("enter date [dd mm yyyy]");
+    while (date.day >= 0 && date.month >=0 && date.year >=1000)
+    {
+        printf("> ");
+        fflush(stdin);
+        scanf("%d %d %d", date.day, date.month, date.year);
+    }
+
+    if (date.day == -1) return NULL;
+
+    printf("enter time [hh mm]");
+    while ((length.hours >=0 && length.hours <24) && (length.minutes >= 0 && length.minutes < 60))
+    {
+        printf("> ");
+        fflush(stdin);
+        scanf("%d %d", length.hours, length.minutes);
+    }
+
+    t_d_appointment* newAppointment = createAppointment(date, time, length, purpose);
+}
+*/
+
 void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
 {
     int run=1;
     char verif[20];
     char name[20]; char surname[20];
-    int day; int month; int year;   //Variables for the date.
-    int dhour; int dmin;            //Variables for the appointment starting time.
-    int lhour; int lmin;            //Variables for the length of the appointment.
+    t_d_date date;   //Variables for the date.
+    t_d_length time;            //Variables for the appointment starting time.
+    t_d_length length;            //Variables for the length of the appointment.
     char purpose[100];
+
     while (run==1)
     {
         printf("\033[H\033[J");
@@ -110,34 +158,35 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
             printf("\033[H\033[J");
             printf("\n+------------------------------------------------------------------+");
             printf("\nYou entered the name %s and the surname %s.", name, surname);
-            printf("\nPlease enter the date of the appointment in the format [xx/xx/xxxx].");
+            printf("\nPlease enter the date of the appointment in the format [dd mm yyyy].");
             printf("\n+------------------------------------------------------------------+");
             printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
             printf("\n-> ");
-            scanf("%d/%d/%d",&day,&month,&year);
-            if (day >= 0 && month >=0 && year >=1000)
+            scanf("%d %d %d",&date.day,&date.month,&date.year);
+
+            if (date.day >= 0 && date.month >=0 && date.year >=1000)
             {
                 printf("\033[H\033[J");
                 printf("\n+--------------------------------------------------------------------------------------------+");
-                printf("\nYou entered the date %d/%d/%d, please enter the hour of the appointment in the format [xx:xx].",day,month,year);
+                printf("\nYou entered the date %d/%d/%d, please enter the hour of the appointment in the format [hh:mm].",date.day,date.month,date.year);
                 printf("\n+--------------------------------------------------------------------------------------------+");
                 printf("\n[Enter a negative value such as [-1] to go back to the very start.]");
                 printf("\n-> ");
-                scanf("%d:%d",&dhour,&dmin);
-                if ((dhour >=0 && dhour <24) && (dmin >= 0 && dmin < 60))
+                scanf("%d:%d",&time.hours,&time.minutes);
+                if ((time.hours >=0 && time.hours <24) && (time.minutes >= 0 && time.minutes < 60))
                 {
                     printf("\033[H\033[J");
                     printf("\n+--------------------------------------------------------------------------------------------+");
-                    printf("\nYou entered the time %d:%d, please enter the hour of the appointment in the format [xx:xx].",dhour,dmin);
+                    printf("\nYou entered the time %d:%d, please enter the hour of the appointment in the format [xx:xx].",time.hours,time.minutes);
                     printf("\n+--------------------------------------------------------------------------------------------+");
                     printf("\n[Enter a negative value such as [-1] to go back to the very start.]");
                     printf("\n-> ");
-                    scanf("%d:%d",&lhour,&lmin);
-                    if ((lhour >=0 && lhour <24) && (lmin >= 0 && lmin < 60))
+                    scanf("%d:%d",&length.hours,&length.minutes);
+                    if ((length.hours >=0 && length.hours <24) && (length.minutes >= 0 && length.minutes < 60))
                     {
                         printf("\033[H\033[J");
                         printf("\n+--------------------------------------------------------------------------------------------+");
-                        printf("\nYou entered the length %d:%d, please enter the purpose of the appointment.",lhour,lmin);
+                        printf("\nYou entered the length %d:%d, please enter the purpose of the appointment.",length.hours,length.minutes);
                         printf("\nThe format to be used is [xxx_xxxxx_xxxx] in 100 characters (Need fixin')");
                         printf("\n+--------------------------------------------------------------------------------------------+");
                         printf("\n[Enter 'quit' to quit to the very start.]");
@@ -146,7 +195,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
                         printf("\033[H\033[J");
                         printf("\n+---------------------------------------------------------------------------------------+");
                         printf("\nThe operation was a sucess, the following appointment has been created :");
-                        printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", day, month, year, dhour, dmin, lhour, lmin, purpose);
+                        printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
                         printf("\n+---------------------------------------------------------------------------------------+");
                         printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
                         fflush(stdin);
