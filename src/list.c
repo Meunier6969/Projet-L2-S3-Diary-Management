@@ -27,7 +27,7 @@ int insertCellAtHead(t_d_list *list, int value, int levels)
     }
 
     if (levels < 0) levels = 0;
-    if (levels >= list->nbLevels) levels = list->nbLevels - 1;
+    if (levels >= list->nbLevels) levels = list->nbLevels;
 
     t_d_cell* newCell = createCell(value, levels);
 
