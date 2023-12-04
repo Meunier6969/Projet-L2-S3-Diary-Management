@@ -196,8 +196,16 @@ t_d_cell *searchHigh(t_d_list list, int value)
 {
     if (list.heads == NULL) return NULL;
 
-    int currentLevel = list.nbLevels - 1; 
+    int currentLevel = list.nbLevels; 
     t_d_cell *current = list.heads[currentLevel];
+
+    do
+    {
+        currentLevel--;
+        current = list.heads[currentLevel];
+    } while (current == NULL && currentLevel > 0);
+
+    if (current == NULL) return NULL;
 
     do
     {

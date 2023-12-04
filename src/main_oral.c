@@ -8,6 +8,17 @@
 
 #define MAX_ITER 100000
 
+void test1()
+{
+    t_d_list basicList = createEmptyList(5);
+
+    insertCellAtHead(&basicList, 7, 0);
+
+    searchHigh(basicList, 7);
+
+    displayAlign(basicList);
+}
+
 void part1()
 {
     t_d_list basicList = createEmptyList(5);
@@ -80,6 +91,7 @@ void part2()
 
 int oral_main()
 {
-    part2();
+    test1();
+    // part1();
     return 0;
 }
