@@ -32,7 +32,7 @@ int main()
 {
     int run = 1;
     char choice;
-    while (run == 1)
+    while (run)
     {
         displayMenu();
         fflush(stdin);
