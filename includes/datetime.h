@@ -14,7 +14,7 @@ typedef struct s_d_length
     int minutes;
 } t_d_length;
 
-t_d_date *createDate(int, int, int);
-t_d_length *createLength(int, int);
+t_d_date createDate(int, int, int);
+t_d_length createLength(int, int);
 
 #endif
