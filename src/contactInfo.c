@@ -3,12 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "../includes/contactInfo.h"
+#include "../includes/contactinfo.h"
 #include "../includes/menu.h"
 
-t_d_contactInfo* createInfo(t_d_contact contact)
+t_d_contactinfo* createInfo(t_d_contact contact)
 {
-    t_d_contactInfo* newInfo = (t_d_contactInfo*) malloc(sizeof(t_d_contactInfo));
+    t_d_contactinfo* newInfo = (t_d_contactinfo*) malloc(sizeof(t_d_contactinfo));
 
     newInfo->contact = contact;
     newInfo->firstAppointment = NULL;
@@ -26,7 +26,7 @@ t_d_contactInfo* createInfo(t_d_contact contact)
     return newInfo;
 }
 
-void deleteInfo(t_d_contactInfo** info)
+void deleteInfo(t_d_contactinfo** info)
 {
     free((*info)->key);
     free((*info)->firstAppointment);
@@ -34,7 +34,7 @@ void deleteInfo(t_d_contactInfo** info)
     *info = NULL;
 }
 
-void displayInfo(t_d_contactInfo* info)
+void displayInfo(t_d_contactinfo* info)
 {
     if (info == NULL)
     {
@@ -47,7 +47,7 @@ void displayInfo(t_d_contactInfo* info)
     printf("Appointements :\n");
 }
 
-void addAppointement(t_d_contactInfo info, t_d_appointment appointment)
+void addAppointement(t_d_contactinfo info, t_d_appointment appointment)
 {
 
 }

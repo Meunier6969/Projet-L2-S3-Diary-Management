@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../includes/calendar.h"
+#include "../includes/contactInfo.h"
 #include "../includes/menu.h"
 // #include "../includes/list.h"
 // #include "../includes/cell.h"
