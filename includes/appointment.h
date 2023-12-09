@@ -6,9 +6,7 @@
 typedef struct s_d_appointment
 {
     t_d_date date;
-
     t_d_length appointmentTime;
-
     t_d_length appointmentLength;
 
     char *purpose; // Information on the appointment. Can be long, so depends I guess.
