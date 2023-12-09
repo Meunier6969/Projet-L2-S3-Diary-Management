@@ -46,7 +46,7 @@ char *scanString(int lenght)
 void menuCreateContact()
 {
     int menurun=1;
-    char verif[30];
+    // char verif[30];
     char name[30];
     char surname[30];
     while (menurun==1)
@@ -136,7 +136,7 @@ void newCA()
 void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
 {
     int run=1;
-    char verif[20];
+    // char verif[20];
     char name[20]; char surname[20];
     t_d_date date;   //Variables for the date.
     t_d_length time;            //Variables for the appointment starting time.
@@ -342,7 +342,7 @@ void menuInfo()
 {
     int run = 1;
     char choice;
-    char verif;
+    // char verif;
     while (run == 1)
     {
         printf("\033[H\033[J");
