@@ -9,21 +9,19 @@
 
 void test()
 {
-    t_d_date date = {1,2,3};
-    t_d_length len = {4, 5};
+    t_d_contact* name = createContact("BING", "CHILLING");
 
-    t_d_appointment* woo = createAppointment(date, len, len, "woddo");
+    t_d_contactinfo* my_darling = createInfo(*name);
 
-    t_d_appointment* next1 = createAppointment(date, len, len, "wsdadsdaso");
-    t_d_appointment* next2 = createAppointment(date, len, len, "chillng");
-    t_d_appointment* next3 = createAppointment(date, len, len, "bing");
+    t_d_date date = createDate(9, 12, 2023);
+    t_d_length len = createLength(18, 35);
+    t_d_appointment* woo = createAppointment(date, len, len, "現在我有冰淇淋");
 
-    addNextAppointment(woo, next1);
-    addNextAppointment(woo, next2);
-    addNextAppointment(woo, next3);
+    addNextAppointment(&my_darling->firstAppointment, woo);
+    displayInfoShort(my_darling);
 
-    showAppointements(woo);
-    
+    // displayInfo(my_darling);
+
     fflush(stdin);
     while( getchar() != '\n' );
 }

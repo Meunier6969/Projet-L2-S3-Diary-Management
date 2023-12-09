@@ -46,10 +46,24 @@ void displayInfo(t_d_contactinfo* info)
     displayContact(info->contact);
     printf("Known as [%s]\n", info->key);
     printf("Appointements :\n");
-    
+    showAppointements(info->firstAppointment);
 }
 
-void addAppointement(t_d_contactinfo info, t_d_appointment appointment)
+void displayInfoShort(t_d_contactinfo* info)
 {
-    addNextAppointment(&info.firstAppointment, &appointment);
+    if (info == NULL)
+    {
+        printf("Contact Info doesn't exist.\n");
+        return;
+    }
+
+    printf("%s %s", info->contact.firstName, info->contact.surname);
+    if (info->firstAppointment != NULL)
+        printf(" - Has Appointments");
+    printf("\n");
+}
+
+void addAppointement(t_d_contactinfo* info, t_d_appointment* appointment)
+{
+    addNextAppointment(&info->firstAppointment, appointment);
 }

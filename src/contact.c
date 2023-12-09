@@ -22,5 +22,5 @@ void deleteContact(t_d_contact* contact)
 
 void displayContact(t_d_contact contact)
 {
-    printf("Contact : [%s] [%s]\n", contact.surname, contact.firstName);
+    printf("Contact : [%s] [%s]\n", contact.firstName, contact.surname);
 }
