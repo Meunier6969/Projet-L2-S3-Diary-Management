@@ -25,14 +25,14 @@ void deleteAppointment()
 
 void addNextAppointment(t_d_appointment** head, t_d_appointment* toAdd)
 {
-    // go through the list until NULL
-    t_d_appointment* crawler = *head;
-
-    if (crawler == NULL)
+    if (*head == NULL)
     {
         *head = toAdd;
         return;
     }
+
+    // go through the list until NULL
+    t_d_appointment* crawler = *head;
 
     while (crawler->next != NULL)
         crawler = crawler->next;
@@ -41,7 +41,7 @@ void addNextAppointment(t_d_appointment** head, t_d_appointment* toAdd)
     crawler->next = toAdd;
 }
 
-void showApp(t_d_appointment* head)
+void showAppointements(t_d_appointment* head)
 {
     t_d_appointment* curapp = head;
 

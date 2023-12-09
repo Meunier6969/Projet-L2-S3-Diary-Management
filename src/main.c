@@ -22,7 +22,7 @@ void test()
     addNextAppointment(woo, next2);
     addNextAppointment(woo, next3);
 
-    showApp(woo);
+    showAppointements(woo);
     
     fflush(stdin);
     while( getchar() != '\n' );

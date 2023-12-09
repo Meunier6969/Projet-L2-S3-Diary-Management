@@ -4,6 +4,7 @@
 #include <ctype.h>
 
 #include "../includes/contactinfo.h"
+#include "../includes/appointment.h"
 #include "../includes/menu.h"
 
 t_d_contactinfo* createInfo(t_d_contact contact)
@@ -45,9 +46,10 @@ void displayInfo(t_d_contactinfo* info)
     displayContact(info->contact);
     printf("Known as [%s]\n", info->key);
     printf("Appointements :\n");
+    
 }
 
 void addAppointement(t_d_contactinfo info, t_d_appointment appointment)
 {
-
+    addNextAppointment(&info.firstAppointment, &appointment);
 }
