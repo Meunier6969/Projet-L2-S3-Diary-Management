@@ -35,7 +35,6 @@ int main()
             case '0':
                 test();
                 break;
-
             case '1':
                 menuCreateContact();
                 break;
@@ -43,18 +42,27 @@ int main()
                 menuCreateAppointment();
                 break;
             case '3':
-                menuSearchContact(); 
+                menuSeeAllContacts(); 
                 break;
             case '4':
-                menuSaveFile();
+                menuSearchContact;
                 break;
             case '5':
-                menuLoadFile();
+                //menuDeleteContact();
                 break;
             case '6':
-                menuInfo();
+                //menuDeleteAppointment();
                 break;
             case '7':
+                menuSaveFile();
+                break;
+            case '8':
+                menuLoadFile();
+                break;
+            case '9':
+                menuInfo();
+                break;
+            case 'q':
                 run=0;
                 break;
         }
