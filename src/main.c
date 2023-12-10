@@ -51,7 +51,7 @@ int main()
                 menuSeeAllContacts(); 
                 break;
             case '4':
-                menuSearchContact;
+                menuSearchContact();
                 break;
             case '5':
                 menuDeleteContact();

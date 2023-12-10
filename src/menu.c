@@ -176,7 +176,7 @@ void menuCreateAppointment()
 
     scanf("%d:%d",&time.hours,&time.minutes);
 
-    if ((time.hours < 0 && time.hours) >24 && (time.minutes < 0 && time.minutes > 60))
+    if ((time.hours < 0 && time.hours > 24) && (time.minutes < 0 && time.minutes > 60))
     {
         return;
     }
