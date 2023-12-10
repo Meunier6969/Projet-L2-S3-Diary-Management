@@ -12,18 +12,29 @@ void test()
 {
     t_d_calendar* cal = createCalendar(4);
 
-    t_d_calcontact* c1 = createCalContact(createInfo(*createContact("AA", "!")));
-    t_d_calcontact* c2 = createCalContact(createInfo(*createContact("CC", "!")));
-    t_d_calcontact* c3 = createCalContact(createInfo(*createContact("BB", "!")));
-
     // displayInfo(c1->contact);
 
-    insertCalContact(&cal, c1);
-    insertCalContact(&cal, c2);
-    insertCalContact(&cal, c3);
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("nassim", "a"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "m"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("amar", "k"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("bastien", "m"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "l"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("baptiste", "f"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaaard", "z"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafar", "m"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("jea", "bing"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("rob", "ert"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("bob", "b"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("jean", "j"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("pierre", "p"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("bois", "b"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("frédo", "f"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("silvain", "s"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafarus", "virus"))));
 
     showCalendar(cal);
 
+    printf("it runs!");
     scanf("\n");
 }
 
