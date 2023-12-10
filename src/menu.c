@@ -5,6 +5,7 @@
 #include "../includes/datetime.h"
 #include "../includes/contact.h"
 #include "../includes/appointment.h"
+#include "../includes/calendar.h"
 
 void displayMenu()
 {
@@ -40,13 +41,14 @@ char *scanString(int lenght)
 {
     char* buffer = malloc(lenght * sizeof(char));
 
+    fflush(stdin);
     fgets(buffer, lenght, stdin);
     buffer[strcspn(buffer, "\n")] = '\0'; // Remove trailing '\n'
     
     return buffer;
 }
 
-void menuCreateContact()
+t_d_calcontact* menuCreateContact()
 {
     char verif[2];
     char name[30];
@@ -62,7 +64,7 @@ void menuCreateContact()
 
     if (strcmp(name,"quit")==0)
     {
-        return;
+        return NULL;
     }
 
     printf("\033[H\033[J");
@@ -75,7 +77,7 @@ void menuCreateContact()
 
     if (strcmp(surname,"quit")==0)
     {
-        return;
+        return NULL;
     }
 
     printf("\033[H\033[J");
@@ -85,17 +87,16 @@ void menuCreateContact()
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
     scanf("%s",verif);
-    return;   //ICI POUR LE RETURN
+
+    t_d_calcontact* newContact = createCalContact(createInfo(createContact(name, surname))); 
+
+    return newContact;
 }
-
-
-
 
 void menuCreateAppointment()
 {
-
     char verif[20];
-    char name[20]; char surname[20];
+    char key[70];
     char yesno[2];
     t_d_date date;     
     t_d_length time;    
@@ -105,55 +106,26 @@ void menuCreateAppointment()
     printf("\033[H\033[J");
     printf("\n+--------------------------------1/8------------------------------------+");
     printf("\nYou choose to create an appointment.");
-    printf("\nDoes the contact already exist [1] or do you wish to make a new one [2] ?");
+    printf("\nWhich contact has that appointement ? (enter the key)");
     printf("\n+-----------------------------------------------------------------------+");
     printf("\n[Enter '0' to quit to the main menu.]");
     printf("\n-> ");
 
-    fflush(stdin);
-    scanf("%s", yesno); 
+    scanf("%s",key);
 
-    if (strcmp(yesno,"0")==0)
-    {
-        return;
-    }
-    
-    printf("\033[H\033[J");
-    printf("\n+--------------------2/8------------------------+");
-    printf("\nYou chose to");
-    if (strcmp(yesno,"1")==0){printf(" FIND ");}else{printf(" CREATE ");}
-    printf("a contact for the appointment.");
-    printf("\nPlease enter the name of the contact.");
-    printf("\n+-----------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the main menu.]");
-    printf("\n-> ");
-
-    scanf("%s",name);
-
-    if (strcmp(name,"quit")==0)
+    if (strcmp(key,"quit")==0)
     {
         return;
     }
 
-    printf("\033[H\033[J");
-    printf("\n+----------------------------3/8-------------------------------+");
-    printf("\nYou entered [%s], please enter the surname of the contact now.",name);
-    printf("\n+--------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the main menu.]");
-    printf("\n-> ");
-    scanf("%s",surname);
-
-    if (strcmp(surname,"quit")==0)
-    {
-        return;
-    }
+    // if key is not in calendar, fuck off
 
     //Maybe here a function to search for the contact if yesno is equal to 1 ?
 
 
     printf("\033[H\033[J");
     printf("\n+---------------------------4/8------------------------------------+");
-    printf("\nYou entered the name %s and the surname %s.", name, surname);
+    printf("\nYou entered %s.", key);
     printf("\nPlease enter the date of the appointment in the format [dd mm yyyy].");
     printf("\n+------------------------------------------------------------------+");
     printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
@@ -218,10 +190,12 @@ void menuCreateAppointment()
     return;   //WHERE WE WILL GET THE VALUES
 }
 
-void menuSeeAllContacts()
+void menuSeeAllContacts(t_d_calendar* calendar)
 {
     char verif[20];
-    printf("Many things to see here. Actually no.\n-> ");
+    
+    showCalendar(calendar);
+
     fflush(stdin);
     scanf("%s", verif);
 }

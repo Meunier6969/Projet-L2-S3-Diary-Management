@@ -7,7 +7,7 @@
 #include "../includes/appointment.h"
 #include "../includes/menu.h"
 
-t_d_contactinfo* createInfo(t_d_contact contact)
+t_d_contactinfo* createInfo(t_d_contact* contact)
 {
     t_d_contactinfo* newInfo = (t_d_contactinfo*) malloc(sizeof(t_d_contactinfo));
 
@@ -15,9 +15,9 @@ t_d_contactinfo* createInfo(t_d_contact contact)
     newInfo->firstAppointment = NULL;
 
     char* newKey = calloc(_MAX_LENGTH, sizeof(char));
-    strcat(newKey, contact.surname);
+    strcat(newKey, contact->surname);
     strcat(newKey, "_");
-    strcat(newKey, contact.firstName);
+    strcat(newKey, contact->firstName);
 
     for(int i = 0; newKey[i]; i++)
         newKey[i] = tolower(newKey[i]);
@@ -43,7 +43,7 @@ void displayInfo(t_d_contactinfo* info)
         return;
     }
 
-    displayContact(info->contact);
+    displayContact(*info->contact);
     printf("Known as [%s]\n", info->key);
     printf("Appointements :\n");
     showAppointements(info->firstAppointment);
@@ -57,7 +57,7 @@ void displayInfoShort(t_d_contactinfo* info)
         return;
     }
 
-    printf("%s %s (%s)", info->contact.firstName, info->contact.surname, info->key);
+    printf("%s %s (%s)", info->contact->firstName, info->contact->surname, info->key);
     if (info->firstAppointment != NULL)
         printf(" - Has Appointments");
     printf("\n");

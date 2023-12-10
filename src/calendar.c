@@ -33,7 +33,7 @@ void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
     // only level 0 for now
     if (calendar == NULL || *calendar == NULL)
     {
-        fprintf(stderr, "fuck you");
+        fprintf(stderr, "Calendar doesn't exist.");
         return;
     }
 
@@ -97,89 +97,33 @@ void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
 
     for (size_t i = contact->level; i > 1; i--)
     {
-        printf("%s %ld ", contact->contact->key, i);
         // if not at head
         if (previous != NULL)
         {
-            printf("NOT AT HEAD");
             crawler = (*calendar)->head;
-
             while (crawler != contact)
             {
                 if (crawler->level >= i) closest = crawler;
                 crawler = crawler->next[0];
             } 
-
             closest->next[i-1] = contact;
         }
         
         // if not at tail
         if (contact->next[0] != NULL)
-        {
-            printf("NOT AT TAiL");
-            
+        {   
             crawler = contact->next[0];
-
-            if (crawler == NULL)
-            {
-
-            }
-
             while (crawler != NULL && crawler->level < i)
             {
                 crawler = crawler->next[0];
             }
-
             closest = crawler;
-
-            /*
-            while (crawler->level >= i) // warning if next == NULL
-            {
-                crawler = crawler->next[0];
-                if (crawler == NULL)
-                {
-                    closest = NULL;
-                    break;
-                }
-            } 
-            */
 
             contact->next[i-1] = closest;
         }
-            /* code */
         
         printf("\n");
-
-        continue;
-
-        // if (closest == NULL) printf("behind is noone - ");
-        // else printf("behind is %s - ", closest->contact->key);
-
-        // to the front
-        
-
-        if (closest == NULL) printf("in front is noone - ");
-        else printf("in front is %s - ", closest->contact->key);
-        printf("for %s at level %ld\n", contact->contact->key, i);
-
-        // for each level of contact
-        // start from head
-        // find closest calcon behind that see => level of calcon >= level
-        // closest.next[level] = contact
-        // start from contact
-        // find closest in front that see => level of calcon >= level
-        // contact.next[level] = closest
-
     }
-
-    printf("__%s__\n", contact->contact->key);
-    showCalendar(*calendar);
-
-}
-
-void changeCalContact(t_d_calcontact* previous, int newLevel)
-{
-
 }
 
 void deleteCalContact(t_d_calendar* calendar, t_d_contactinfo* contact)
@@ -194,12 +138,20 @@ t_d_calcontact* searchCalContact(t_d_calendar* calendar, char* key)
 
 void showCalendar(t_d_calendar* calendar)
 {
+    int i = 1;
     t_d_calcontact* crawler = calendar->head;
+
+    if (crawler == NULL)
+    {
+        printf("Calendar is empty.\n");
+    }
 
     while (crawler != NULL)
     {
-        displayCalContact(crawler);
+        printf("%d - ", i);
+        displayInfoShort(crawler->contact);
         crawler = crawler->next[0];
+        i++;
     }
 }
 

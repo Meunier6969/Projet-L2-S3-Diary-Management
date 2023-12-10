@@ -8,40 +8,14 @@
 // #include "../includes/cell.h"
 // #include "timer/timer.h"
 
-void test()
-{
-    t_d_calendar* cal = createCalendar(4);
-
-    // displayInfo(c1->contact);
-
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "m"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("amar", "k"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("bastien", "m"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "l"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("nassim", "a"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("baptiste", "f"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaaard", "z"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafar", "m"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("jea", "bing"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("rob", "ert"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("bob", "b"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("jean", "j"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("pierre", "p"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("bois", "b"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("frédo", "f"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("silvain", "s"))));
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafarus", "virus"))));
-
-    printf("it runs!\n\n");
-    showCalendar(cal);
-
-    scanf("\n");
-}
+t_d_calendar* Calendar;
 
 int main()
 {
-    int run = 1;
+    Calendar = createCalendar(4);
     char choice;
+
+    int run = 1;
     while (run)
     {
         displayMenu();
@@ -49,17 +23,17 @@ int main()
         scanf("%c", &choice);
         switch (choice)
         {
-            case '0':
-                test();
-                break;
             case '1':
-                menuCreateContact();
+                t_d_calcontact* newContact;
+                newContact = menuCreateContact();
+                insertCalContact(&Calendar, newContact);
+                // Name and Surname are broken, key isn't somehow ?
                 break;
             case '2':
                 menuCreateAppointment();
                 break;
             case '3':
-                menuSeeAllContacts(); 
+                menuSeeAllContacts(Calendar);
                 break;
             case '4':
                 menuSearchContact();
@@ -84,5 +58,6 @@ int main()
                 break;
         }
     }
+    printf("Thank You !\n");
     return 0;
 }

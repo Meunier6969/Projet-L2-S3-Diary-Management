@@ -6,13 +6,13 @@
 
 typedef struct s_d_contactinfo
 {
-    t_d_contact contact;
+    t_d_contact *contact;
     char *key;
 
     t_d_appointment *firstAppointment;
 } t_d_contactinfo;
 
-t_d_contactinfo* createInfo(t_d_contact);
+t_d_contactinfo* createInfo(t_d_contact*);
 void deleteInfo(t_d_contactinfo**);
 void displayInfo(t_d_contactinfo*);
 void displayInfoShort(t_d_contactinfo*);
