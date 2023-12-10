@@ -69,7 +69,7 @@ void menuCreateContact()
     printf("\n+-------------------------------------2/3---------------------------------------+");
     printf("\nYou entered [\033[1;35m%s\033[1;0m], please enter the surname of the contact now.",name);
     printf("\n+-------------------------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the previous menu.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
     scanf("%s",surname);
 
@@ -82,7 +82,7 @@ void menuCreateContact()
     printf("\n+--------------------------3/3---------------------------------+");
     printf("\nThe operation was a success, contact [%s] [%s] has been created.",name,surname);
     printf("\n+--------------------------------------------------------------+");
-    printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
+    printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
     scanf("%s",verif);
     return;   //ICI POUR LE RETURN
@@ -91,7 +91,7 @@ void menuCreateContact()
 
 
 
-void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
+void menuCreateAppointment()
 {
 
     char verif[20];
@@ -136,10 +136,10 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     }
 
     printf("\033[H\033[J");
-    printf("\n+-------------------------- 3/8 -------------------------------+");
+    printf("\n+----------------------------3/8-------------------------------+");
     printf("\nYou entered [%s], please enter the surname of the contact now.",name);
     printf("\n+--------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the previous menu.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
     scanf("%s",surname);
 
@@ -156,7 +156,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     printf("\nYou entered the name %s and the surname %s.", name, surname);
     printf("\nPlease enter the date of the appointment in the format [dd mm yyyy].");
     printf("\n+------------------------------------------------------------------+");
-    printf("\n[Enter a negative value such as [-1] anywhere to quit.]");
+    printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
     printf("\n-> ");
 
     scanf("%d %d %d",&date.day, &date.month,&date.year);
@@ -171,7 +171,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     printf("\n+---------------------------------------------5/8--------------------------------------------+");
     printf("\nYou entered the date %d/%d/%d, please enter the hour of the appointment in the format [hh:mm].",date.day,date.month,date.year);
     printf("\n+--------------------------------------------------------------------------------------------+");
-    printf("\n[Enter a negative value such as [-1] to go back to the very start.]");
+    printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
     printf("\n-> ");
 
     scanf("%d:%d",&time.hours,&time.minutes);
@@ -186,7 +186,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     printf("\n+--------------------------------------6/8------------------------------------------------+");
     printf("\nYou entered the time %d:%d, please enter the hour of the appointment in the format [xx:xx].",time.hours,time.minutes);
     printf("\n+-----------------------------------------------------------------------------------------+");
-    printf("\n[Enter a negative value such as [-1] to go back to the very start.]");
+    printf("\n[Enter a negative value such as [-1] to go back to the main menu.]");
     printf("\n-> ");
 
     scanf("%d:%d",&length.hours,&length.minutes);
@@ -201,7 +201,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     printf("\nYou entered the length %d:%d, please enter the purpose of the appointment.",length.hours,length.minutes);
     printf("\nThe format to be used is [xxx_xxxxx_xxxx] in 100 characters");
     printf("\n+------------------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the very start.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
 
     scanf("%s",purpose);
@@ -211,7 +211,7 @@ void menuCreateAppointment() //Date xx/xx/xxxx -> Heure xx:xx -> Length xx:xx
     printf("\nThe operation was a sucess, the following appointment has been created :");
     printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
     printf("\n+-----------------------------------------------------------------------+");
-    printf("\n[Ready to continue ? You cannot go back anyway.]\n-> ");
+    printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
     scanf("%s", verif);
 
@@ -281,7 +281,7 @@ void menuDeleteContact()
     printf("\n+----------------------------2/3-----------------------------+");
     printf("\nYou entered [%s], please enter the surname of the contact now.",name);
     printf("\n+------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the previous menu.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
     scanf("%s",surname);
 
@@ -294,7 +294,7 @@ void menuDeleteContact()
     printf("\n+-------------------------------3/4-------------------------------+");
     printf("\nAre you really sure that you want to delete the contact [%s] [%s] ?",name,surname);
     printf("\n+-----------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
 
     scanf("%s",verif);
