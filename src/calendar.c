@@ -22,6 +22,9 @@ t_d_calcontact* createCalContact(t_d_contactinfo* contact)
     newCalContact->level = 0;   // default values, changed by insertCalContact
     newCalContact->next = malloc(4 * sizeof(t_d_calcontact*)); // and changeCalContact
 
+    for (size_t i = 0; i < 4; i++)
+        newCalContact->next[i] = NULL;
+
     return newCalContact;
 }
 
@@ -125,6 +128,13 @@ void displayCalContact(t_d_calcontact* contact)
     }
 
     printf("%d | ", contact->level);
-    printf("%s", contact->contact->key);
+    printf("%s\t", contact->contact->key);
+
+    for (size_t i = 0; i < 4; i++)
+    {
+        printf("[%p]", contact->next[i]);
+    }
+    
+
     printf("\n");
 }
