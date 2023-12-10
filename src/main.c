@@ -12,9 +12,15 @@ void test()
 {
     t_d_calendar* cal = createCalendar(4);
 
-    t_d_calcontact* c1 = createCalContact(createInfo(*createContact("fuck", "you")));
+    t_d_calcontact* c1 = createCalContact(createInfo(*createContact("AA", "!")));
+    t_d_calcontact* c2 = createCalContact(createInfo(*createContact("CC", "!")));
+    t_d_calcontact* c3 = createCalContact(createInfo(*createContact("BB", "!")));
 
-    insertCalContact(cal, c1);
+    // displayInfo(c1->contact);
+
+    insertCalContact(&cal, c1);
+    insertCalContact(&cal, c2);
+    insertCalContact(&cal, c3);
 
     showCalendar(cal);
 

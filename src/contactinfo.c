@@ -57,7 +57,7 @@ void displayInfoShort(t_d_contactinfo* info)
         return;
     }
 
-    printf("%s %s", info->contact.firstName, info->contact.surname);
+    printf("%s %s (%s)", info->contact.firstName, info->contact.surname, info->key);
     if (info->firstAppointment != NULL)
         printf(" - Has Appointments");
     printf("\n");
