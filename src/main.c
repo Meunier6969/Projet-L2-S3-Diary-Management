@@ -14,11 +14,11 @@ void test()
 
     // displayInfo(c1->contact);
 
-    insertCalContact(&cal, createCalContact(createInfo(*createContact("nassim", "a"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "m"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("amar", "k"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("bastien", "m"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("antoine", "l"))));
+    insertCalContact(&cal, createCalContact(createInfo(*createContact("nassim", "a"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("baptiste", "f"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("jaaard", "z"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafar", "m"))));
@@ -32,9 +32,9 @@ void test()
     insertCalContact(&cal, createCalContact(createInfo(*createContact("silvain", "s"))));
     insertCalContact(&cal, createCalContact(createInfo(*createContact("jaafarus", "virus"))));
 
+    printf("it runs!\n\n");
     showCalendar(cal);
 
-    printf("it runs!");
     scanf("\n");
 }
 
