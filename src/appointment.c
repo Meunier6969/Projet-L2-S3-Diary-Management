@@ -20,6 +20,13 @@ t_d_appointment* createAppointment(t_d_date date, t_d_length time, t_d_length le
 
 void deleteAppointment(t_d_appointment** head, int index)
 {
+    if (head == NULL || *head == NULL)
+    {
+        printf("No appointmens to delete.\n");
+        return;
+    }
+    
+
     if (index <= 0) 
     {
         printf("Invalid index (too low)\n");

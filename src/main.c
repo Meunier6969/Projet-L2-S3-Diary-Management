@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../includes/contactInfo.h"
+#include "../includes/contactinfo.h"
 #include "../includes/menu.h"
 // #include "../includes/list.h"
 // #include "../includes/cell.h"
@@ -19,17 +19,16 @@ void test()
     t_d_appointment* woo1 = createAppointment(date, len, len, "fgbd1");
     t_d_appointment* woo2 = createAppointment(date, len, len, "adsf2");
 
-    addNextAppointment(&my_darling->firstAppointment, woo);
-    addNextAppointment(&my_darling->firstAppointment, woo1);
-    addNextAppointment(&my_darling->firstAppointment, woo2);
+    // addNextAppointment(&my_darling->firstAppointment, woo);
+    // addNextAppointment(&my_darling->firstAppointment, woo1);
+    // addNextAppointment(&my_darling->firstAppointment, woo2);
 
     // displayInfoShort(my_darling);
     displayInfo(my_darling);
     deleteAppointment(&my_darling->firstAppointment, 1);
-    displayInfo(my_darling);
+    // displayInfo(my_darling);
 
-    fflush(stdin);
-    while( getchar() != '\n' );
+    scanf("\n");
 }
 
 int main()
