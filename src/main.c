@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "../includes/contactinfo.h"
+#include "../includes/calendar.h"
 #include "../includes/menu.h"
 // #include "../includes/list.h"
 // #include "../includes/cell.h"
@@ -9,24 +10,13 @@
 
 void test()
 {
-    t_d_contact* name = createContact("BING", "CHILLING");
+    t_d_calendar* cal = createCalendar(4);
 
-    t_d_contactinfo* my_darling = createInfo(*name);
+    t_d_calcontact* c1 = createCalContact(createInfo(*createContact("fuck", "you")));
 
-    t_d_date date = createDate(9, 12, 2023);
-    t_d_length len = createLength(18, 35);
-    t_d_appointment* woo = createAppointment(date, len, len, "現在我有冰淇淋");
-    t_d_appointment* woo1 = createAppointment(date, len, len, "fgbd1");
-    t_d_appointment* woo2 = createAppointment(date, len, len, "adsf2");
+    insertCalContact(cal, c1);
 
-    // addNextAppointment(&my_darling->firstAppointment, woo);
-    // addNextAppointment(&my_darling->firstAppointment, woo1);
-    // addNextAppointment(&my_darling->firstAppointment, woo2);
-
-    // displayInfoShort(my_darling);
-    displayInfo(my_darling);
-    deleteAppointment(&my_darling->firstAppointment, 1);
-    // displayInfo(my_darling);
+    showCalendar(cal);
 
     scanf("\n");
 }
