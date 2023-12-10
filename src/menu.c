@@ -258,6 +258,136 @@ void menuSearchContact()
     }
 }
 
+void menuDeleteContact()
+{
+    char verif[10];
+    char name[30];
+    char surname[30];
+    printf("\033[H\033[J");
+    printf("\n+------------------1/3-----------------+");
+    printf("\nYou choose to delete a contact.");
+    printf("\nPlease enter the name of the contact.");
+    printf("\n+--------------------------------------+");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
+    printf("\n-> ");
+    scanf("%s",name);
+
+    if (strcmp(name,"quit")==0)
+    {
+        return;
+    }
+
+    printf("\033[H\033[J");
+    printf("\n+----------------------------2/3-----------------------------+");
+    printf("\nYou entered [%s], please enter the surname of the contact now.",name);
+    printf("\n+------------------------------------------------------------+");
+    printf("\n[Enter 'quit' to quit to the previous menu.]");
+    printf("\n-> ");
+    scanf("%s",surname);
+
+    if (strcmp(surname,"quit")==0)
+    {
+        return;
+    }
+
+    printf("\033[H\033[J");
+    printf("\n+-------------------------------3/4-------------------------------+");
+    printf("\nAre you really sure that you want to delete the contact [%s] [%s] ?",name,surname);
+    printf("\n+-----------------------------------------------------------------+");
+    printf("\n[Enter 'quit' to quit.]");
+    printf("\n-> ");
+
+    scanf("%s",verif);
+
+    if (strcmp(verif,"quit")==0)
+    {
+        return;
+    }
+
+    //We need to check if the contact actually exists.
+    printf("\033[H\033[J");
+    printf("\n+--------------------------4/4-------------------------+");
+    printf("\nThe contact [%s] [%s] has been successfuly deleted.",name,surname);
+    printf("\n+------------------------------------------------------+");
+    printf("\n[Ready to continue ?]\n-> ");
+    fflush(stdin);
+    scanf("%s",verif);
+    return;   //ICI POUR LE RETURN
+}
+
+void menuDeleteAppointment()
+{
+    char verif[10];
+    int id;
+    char name[30];
+    char surname[30];
+    printf("\033[H\033[J");
+    printf("\n+------------------------1/5----------------------+");
+    printf("\nYou choose to delete an appointment.");
+    printf("\nPlease enter the name of the contact's appointment.");
+    printf("\n+-------------------------------------------------+");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
+    printf("\n-> ");
+    scanf("%s",name);
+
+    if (strcmp(name,"quit")==0)
+    {
+        return;
+    }
+
+    printf("\033[H\033[J");
+    printf("\n+-------------------------------------2/5----------------------------------+");
+    printf("\nYou entered [%s], please enter the surname of the contact's appointment now.",name);
+    printf("\n+--------------------------------------------------------------------------+");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
+    printf("\n-> ");
+    scanf("%s",surname);
+
+    if (strcmp(surname,"quit")==0)
+    {
+        return;
+    }
+
+    printf("\033[H\033[J");
+    printf("\n+-----------------------------------------------3/5-----------------------------------------+");
+    printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [%s] [%s] :",name,surname);
+    //WE WILL NEED TO SHOW ALL THE APPOINTMENT OF THE CONTACT WITH A NUMBER NEXT TO IT TO IDENTIFY IT
+    printf("\n+-------------------------------------------------------------------------------------------+");
+    printf("\n[Enter a negative number to quit to the main menu.]");
+    printf("\n-> ");
+
+    scanf("%d",&id);
+
+    if (id<0)
+    {
+        return;
+    }
+
+    printf("\033[H\033[J");
+    printf("\n+-------------------------------4/5-------------------------------+");
+    printf("\nAre you really sure that you want to delete this appointment : ?"); //Here we will show info about that appointment
+    printf("\n+-----------------------------------------------------------------+");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
+    printf("\n-> ");
+
+    scanf("%s",verif);
+
+    if (strcmp(verif,"quit")==0)
+    {
+        return;
+    }
+
+    //We need to check if the contact actually exists.
+    printf("\033[H\033[J");
+    printf("\n+--------------------------5/5-------------------------+");
+    printf("\nThe apppointment [%d] has been successfuly deleted.",id);
+    printf("\n+------------------------------------------------------+");
+    printf("\n[Ready to continue ?]\n-> ");
+    fflush(stdin);
+    scanf("%s",verif);
+    return;   //ICI POUR LE RETURN
+}
+
 void menuSaveFile()
 {
     char answer[2];

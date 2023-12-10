@@ -11,9 +11,9 @@ char *scanString(int);
 void menuCreateContact();
 void menuCreateAppointment();
 void menuSeeAllContacts();
-void menuDeleteAppointment(); //Will probably need the calendar in entry.
-void menuViewContactAppointment(); //Should use a searchcontact function inside of it.
 void menuSearchContact(); //Will also need a searchcontact function.
+void menuDeleteContact();
+void menuDeleteAppointment(); //Will probably need the calendar in entry.
 void menuSaveFile();
 void menuLoadFile();
 void menuInfo();

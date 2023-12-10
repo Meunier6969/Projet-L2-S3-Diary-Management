@@ -48,10 +48,10 @@ int main()
                 menuSearchContact;
                 break;
             case '5':
-                //menuDeleteContact();
+                menuDeleteContact();
                 break;
             case '6':
-                //menuDeleteAppointment();
+                menuDeleteAppointment();
                 break;
             case '7':
                 menuSaveFile();
