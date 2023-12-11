@@ -188,7 +188,7 @@ void menuCreateAppointment(t_d_calendar* Calendar)
     printf("\n+---------------------------------8/8-----------------------------------+");
     printf("\nThe operation was a sucess, the following appointment has been created :");
     printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
-    printf("\nIt has been associated to the contact with the key [%d]", key);
+    printf("\nIt has been associated to the contact with the key [%s]", key);
     printf("\n+-----------------------------------------------------------------------+");
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
