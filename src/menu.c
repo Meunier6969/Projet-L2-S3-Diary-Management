@@ -109,7 +109,6 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     }
 
     t_d_calcontact* contact = searchCalContact(calendar, search);
-    //Maybe here a function to search for the contact if yesno is equal to 1 ?
 
     if (contact == NULL)
     {
@@ -183,7 +182,6 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
 
     t_d_appointment* appointment;
     appointment = createAppointment(date, time, length, strdup(purpose));
-    //addNextAppointment= Should add to the contact except I don't know how to use the key
     addAppointement(contact->contact, appointment);
 
     printf("\033[H\033[J");
@@ -360,7 +358,6 @@ void menuDeleteAppointment(t_d_calendar *calendar)
     printf("\033[H\033[J");
     printf("\n+-----------------------------------------------3/5-----------------------------------------+");
     printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [%s] :\n",key);
-    //WE WILL NEED TO SHOW ALL THE APPOINTMENT OF THE CONTACT WITH A NUMBER NEXT TO IT TO IDENTIFY IT
     displayInfo(contact->contact);
     printf("\n+-------------------------------------------------------------------------------------------+");
     printf("\n[Enter a negative number to quit to the main menu.]");
@@ -375,7 +372,7 @@ void menuDeleteAppointment(t_d_calendar *calendar)
 
     printf("\033[H\033[J");
     printf("\n+-------------------------------4/5-------------------------------+");
-    printf("\nAre you really sure that you want to delete this appointment : ?"); //Here we will show info about that appointment
+    printf("\nAre you really sure that you want to delete this appointment : ?");
     printf("\n+-----------------------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
@@ -387,9 +384,8 @@ void menuDeleteAppointment(t_d_calendar *calendar)
         return;
     }
 
-    deleteAppointment(contact->contact->firstAppointment, id);
+    deleteAppointment(&(contact->contact->firstAppointment), id);
 
-    //We need to check if the contact actually exists.
     printf("\033[H\033[J");
     printf("\n+--------------------------5/5-------------------------+");
     printf("\nThe apppointment [\033[1;35m%d\033[1;0m] has been successfuly deleted.",id);
@@ -397,7 +393,6 @@ void menuDeleteAppointment(t_d_calendar *calendar)
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
     scanf("%s",verif);
-    return;   //ICI POUR LE RETURN
 }
 
 void menuSaveFile(t_d_calendar* calendar)
@@ -421,7 +416,7 @@ void menuSaveFile(t_d_calendar* calendar)
     
     printf("\033[H\033[J");
     printf("\n+-------------------------------2/3------------------------------+");
-    printf("\nPlease enter the name of the file which will contain the calendar.");      //PLACEHOLDER HERE
+    printf("\nPlease enter the name of the file which will contain the calendar.");
     printf("\nPlease do not put special characters.");
     printf("\n+----------------------------------------------------------------+");
     printf("\n-> ");
@@ -521,7 +516,6 @@ void menuLoadFile(t_d_calendar** calendar)
     char firstName[30];
     while (fgets(buffer, sizeof(buffer), save) != NULL)
     {
-        
         strcpy(surname, strtok(buffer, " "));
         strcpy(firstName, strtok(buffer, " "));
         insertCalContact(calendar, createCalContact(createInfo(createContact(strdup(surname), strdup(firstName)))));

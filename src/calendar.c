@@ -20,7 +20,7 @@ t_d_calcontact* createCalContact(t_d_contactinfo* contact)
 
     newCalContact->contact = contact;
     newCalContact->level = 0;   // default values, changed by insertCalContact
-    newCalContact->next = malloc(4 * sizeof(t_d_calcontact*)); // and changeCalContact
+    newCalContact->next = malloc(4 * sizeof(t_d_calcontact*));
 
     for (size_t i = 0; i < 4; i++)
         newCalContact->next[i] = NULL;
@@ -125,15 +125,13 @@ void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
             closest = crawler;
 
             contact->next[i-1] = closest;
-        }
-        
-        printf("\n");
+        } 
     }
 }
 
 void deleteCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
 {
-    free(contact);
+    free(contact); // :D
 }
 
 t_d_calcontact* searchCalContact(t_d_calendar* calendar, char* key)
@@ -224,6 +222,5 @@ void displayCalContact(t_d_calcontact* contact)
         else                            printf("[%s]", contact->next[i]->contact->key);
     }
     
-
     printf("\n");
 }

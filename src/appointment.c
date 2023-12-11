@@ -25,7 +25,6 @@ void deleteAppointment(t_d_appointment** head, int index)
         printf("No appointmens to delete.\n");
         return;
     }
-    
 
     if (index <= 0) 
     {
