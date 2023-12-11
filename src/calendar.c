@@ -133,6 +133,52 @@ void deleteCalContact(t_d_calendar* calendar, t_d_contactinfo* contact)
 
 t_d_calcontact* searchCalContact(t_d_calendar* calendar, char* key)
 {
+    if (calendar->head == NULL)
+        return NULL;
+
+    // check if head is true
+    if (strcmp(calendar->head->contact->key, key) == 0)
+        return calendar->head;
+
+    t_d_calcontact *crawler = calendar->head; 
+    t_d_calcontact *previous = crawler;
+
+    // searching level by level
+    for (size_t lvl = 3; lvl > 0; lvl--)
+    {
+        // printf("lvl %ld\n", lvl);
+        crawler = previous;
+        
+        while (strncmp(crawler->contact->key, key, 4-lvl) <= 0)
+        {
+            previous = crawler;
+            crawler = crawler->next[lvl];
+            
+            if (crawler == NULL)
+                break;
+
+            if (strcmp(crawler->contact->key, key) == 0)
+                return crawler;
+        }
+    }
+    
+    // searching the whole list
+    crawler = previous;
+
+    if (crawler->next[0] == NULL)
+        return NULL;
+
+    while (strcmp(crawler->contact->key, key) < 0)
+    {
+        previous = crawler;
+        crawler = crawler->next[0];
+        if (crawler == NULL)
+            break;
+    }
+    
+    if (strcmp(crawler->contact->key, key) == 0)
+        return crawler;
+
     return NULL;
 }
 
