@@ -14,16 +14,16 @@ void displayMenu()
     printf("\n+-------------Diary Managment--------------+");
     printf("\n+------------------------------------------+");
     printf("\n+- \033[1;35m Welcome, what would you like to do ? \033[1;0m -+");
-    printf("\n[1] Create a Contact");
-    printf("\n[2] Create an Appointment");
-    printf("\n[3] See all Contacts");
-    printf("\n[4] Search for a Contact"); 
-    printf("\n[5] Delete Contact");
-    printf("\n[6] Delete Appointment");
-    printf("\n[7] Save the Appointment File");
-    printf("\n[8] Load Appointment File");
-    printf("\n[9] Info");
-    printf("\n[q] Quit");
+    printf("\n[\033[1;35m1\033[1;0m] Create a Contact");
+    printf("\n[\033[1;35m2\033[1;0m] Create an Appointment");
+    printf("\n[\033[1;35m3\033[1;0m] See all Contacts");
+    printf("\n[\033[1;35m4\033[1;0m] Search for a Contact"); 
+    printf("\n[\033[1;35m5\033[1;0m] Delete Contact");
+    printf("\n[\033[1;35m6\033[1;0m] Delete Appointment");
+    printf("\n[\033[1;35m7\033[1;0m] Save the Appointment File");
+    printf("\n[\033[1;35m8\033[1;0m] Load Appointment File");
+    printf("\n[\033[1;35m9\033[1;0m] Info");
+    printf("\n[\033[1;35mq\033[1;0m] Quit");
     printf("\n+------------------------------------------+");
     printf("\n-> ");
 }
@@ -83,7 +83,7 @@ t_d_calcontact* menuCreateContact()
 
     printf("\033[H\033[J");
     printf("\n+--------------------------3/3---------------------------------+");
-    printf("\nThe operation was a success, contact [%s] [%s] has been created.",name,surname);
+    printf("\nThe operation was a success, contact [\033[1;35m%s\033[1;0m] [\033[1;35m%s\033[1;0m] has been created.",name,surname);
     printf("\n+--------------------------------------------------------------+");
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
@@ -103,9 +103,9 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     char purpose[100];
 
     printf("\033[H\033[J");
-    printf("\n+--------------------------------1/8------------------------------------+");
+    printf("\n+--------------------------------1/6------------------------------------+");
     printf("\nYou choose to create an appointment.");
-    printf("\nWhich contact has that appointement ? (enter the key)");
+    printf("\nWhich contact has that appointement ? [name_surname]");
     printf("\n+-----------------------------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
@@ -137,8 +137,8 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
 
 
     printf("\033[H\033[J");
-    printf("\n+---------------------------4/8------------------------------------+");
-    printf("\nYou entered %s.", search);
+    printf("\n+---------------------------2/6------------------------------------+");
+    printf("\nYou entered \033[1;35m%s\033[1;0m.", search);
     printf("\nPlease enter the date of the appointment in the format [dd mm yyyy].");
     printf("\n+------------------------------------------------------------------+");
     printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
@@ -153,8 +153,8 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
 
 
     printf("\033[H\033[J");
-    printf("\n+---------------------------------------------5/8--------------------------------------------+");
-    printf("\nYou entered the date %d/%d/%d, please enter the hour of the appointment in the format [hh:mm].",date.day,date.month,date.year);
+    printf("\n+---------------------------------------------3/6--------------------------------------------+");
+    printf("\nYou entered the date \033[1;35m%d/%d/%d\033[1;0m, please enter the hour of the appointment in the format [hh:mm].",date.day,date.month,date.year);
     printf("\n+--------------------------------------------------------------------------------------------+");
     printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
     printf("\n-> ");
@@ -168,8 +168,8 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
 
 
     printf("\033[H\033[J");
-    printf("\n+--------------------------------------6/8------------------------------------------------+");
-    printf("\nYou entered the time %d:%d, please enter the hour of the appointment in the format [xx:xx].",time.hours,time.minutes);
+    printf("\n+--------------------------------------4/6------------------------------------------------+");
+    printf("\nYou entered the time \033[1;35m%d:%d\033[1;0m, please enter the hour of the appointment in the format [xx:xx].",time.hours,time.minutes);
     printf("\n+-----------------------------------------------------------------------------------------+");
     printf("\n[Enter a negative value such as [-1] to go back to the main menu.]");
     printf("\n-> ");
@@ -182,8 +182,8 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     }
 
     printf("\033[H\033[J");
-    printf("\n+--------------------------------7/8-------------------------------------+");
-    printf("\nYou entered the length %d:%d, please enter the purpose of the appointment.",length.hours,length.minutes);
+    printf("\n+--------------------------------5/6-------------------------------------+");
+    printf("\nYou entered the length \033[1;35m%d:%d\033[1;0m, please enter the purpose of the appointment.",length.hours,length.minutes);
     printf("\nThe format to be used is [xxx_xxxxx_xxxx] in 100 characters");
     printf("\n+------------------------------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
@@ -197,10 +197,10 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     addAppointement(contact->contact, appointment);
 
     printf("\033[H\033[J");
-    printf("\n+---------------------------------8/8-----------------------------------+");
+    printf("\n+---------------------------------6/6-----------------------------------+");
     printf("\nThe operation was a sucess, the following appointment has been created :");
-    printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
-    printf("\nIt has been associated to the contact with the key [%s]", search);
+    printf("\n\n\033[1;35mDate\033[1;0m : %d/%d/%d\n\033[1;35mDate Time\033[1;0m : %d:%d\n\033[1;35mAppointment Length\033[1;0m : %d:%d\n\033[1;35mPurpose\033[1;0m : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
+    printf("\n\nIt has been associated to the contact with the key [%s]", search);
     printf("\n+-----------------------------------------------------------------------+");
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
@@ -292,7 +292,7 @@ void menuDeleteContact(t_d_calendar **Calendar)
     {
         printf("\033[H\033[J");
         printf("\n+-------------------------------2/3-------------------------------+");
-        printf("\nAre you really sure that you want to delete the contact [%s] ?", search);
+        printf("\nAre you really sure that you want to delete the contact [\033[1;35m%s\033[1;0m] ?", search);
         printf("\n+-----------------------------------------------------------------+");
         printf("\n[Enter 'quit' to quit to the main menu.]");
         printf("\n-> ");
@@ -308,7 +308,7 @@ void menuDeleteContact(t_d_calendar **Calendar)
 
         printf("\033[H\033[J");
         printf("\n+--------------------------3/3-------------------------+");
-        printf("\nThe contact [%s] has been successfuly deleted.", search);
+        printf("\nThe contact [\033[1;35m%s\033[1;0m] has been successfuly deleted.", search);
         printf("\n+------------------------------------------------------+");
         printf("\n[Ready to continue ?]\n-> ");
         fflush(stdin);
@@ -351,7 +351,7 @@ void menuDeleteAppointment()
 
     printf("\033[H\033[J");
     printf("\n+-------------------------------------2/5----------------------------------+");
-    printf("\nYou entered [%s], please enter the surname of the contact's appointment now.",name);
+    printf("\nYou entered [\033[1;35m%s\033[1;0m], please enter the surname of the contact's appointment now.",name);
     printf("\n+--------------------------------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
@@ -364,7 +364,7 @@ void menuDeleteAppointment()
 
     printf("\033[H\033[J");
     printf("\n+-----------------------------------------------3/5-----------------------------------------+");
-    printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [%s] [%s] :",name,surname);
+    printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [\033[1;35m%s\033[1;0m] [\033[1;35m%s\033[1;0m] :",name,surname);
     //WE WILL NEED TO SHOW ALL THE APPOINTMENT OF THE CONTACT WITH A NUMBER NEXT TO IT TO IDENTIFY IT
     printf("\n+-------------------------------------------------------------------------------------------+");
     printf("\n[Enter a negative number to quit to the main menu.]");
@@ -394,7 +394,7 @@ void menuDeleteAppointment()
     //We need to check if the contact actually exists.
     printf("\033[H\033[J");
     printf("\n+--------------------------5/5-------------------------+");
-    printf("\nThe apppointment [%d] has been successfuly deleted.",id);
+    printf("\nThe apppointment [\033[1;35m%d\033[1;0m] has been successfuly deleted.",id);
     printf("\n+------------------------------------------------------+");
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
@@ -410,7 +410,7 @@ void menuSaveFile(t_d_calendar* calendar)
     printf("\033[H\033[J");
     printf("\n+-------------------1/3-------------------+");
     printf("\nYou chose to save your calendar.");
-    printf("\nEnter either [y] to save or [n] to go back.");
+    printf("\nEnter either [\033[1;35my\033[1;0m] to save or [\033[1;35mn\033[1;0m] to go back.");
     printf("\n+-----------------------------------------+");
     printf("\n-> ");
     fflush(stdin);
@@ -436,7 +436,7 @@ void menuSaveFile(t_d_calendar* calendar)
     {
         fclose(save);
         // if yes, ask if overwrite
-        printf("File already exist. Do you want to overwrite it ? (y/n)\n");
+        printf("File already exist. Do you want to overwrite it ? (\033[1;35my/n\033[1;0m)\n");
         printf("-> ");
 
         fflush(stdin);
@@ -473,7 +473,7 @@ void menuSaveFile(t_d_calendar* calendar)
 
     printf("\033[H\033[J");
     printf("\n+-------------------------3/3----------------------+");
-    printf("\nSuccessfully saved the calendar in  [%s].",filename);
+    printf("\nSuccessfully saved the calendar in  [\033[1;35m%s\033[1;0m].",filename);
     printf("\nEnter anything to continue.");
     printf("\n+--------------------------------------------------+");
     printf("\n-> ");
@@ -488,7 +488,7 @@ void menuLoadFile(t_d_calendar** calendar)
     printf("\033[H\033[J");
     printf("\n+-------------------1/3-------------------+");
     printf("\nYou chose to load a calendar.");
-    printf("\nEnter either [y] to save or [n] to go back.");
+    printf("\nEnter either [\033[1;35my\033[1;0m] to save or [\033[1;35mn\033[1;0m] to go back.");
     printf("\n+-----------------------------------------+");
     printf("\n-> ");
     fflush(stdin);
@@ -550,9 +550,9 @@ void menuInfo()
         printf("\033[H\033[J");
         printf("\n+-------------------------------------+");
         printf("\n+- What do you wish to learn about ? -+");
-        printf("\n[1] Credits");
-        printf("\n[2] Calculation Time");
-        printf("\n[3] Quit the Info Menu");
+        printf("\n[\033[1;35m1\033[1;0m] Credits");
+        printf("\n[\033[1;35m2\033[1;0m] Calculation Time");
+        printf("\n[\033[1;35m3\033[1;0m] Quit the Info Menu");
         printf("\n+-------------------------------------+");
         printf("\n-> ");
         fflush(stdin);
@@ -564,9 +564,9 @@ void menuInfo()
                 printf("\033[H\033[J");
                 printf("\n+-----------------------------------------------------------+");
                 printf("\nMade for an Efrei Project by :");           
-                printf("\n-> Antoine IGLESIAS-TALLON (Still MIA)");
-                printf("\n-> Antoine MEUNIER (No link to the school principal)");
-                printf("\n-> Nassim AININE (Not an Antoine)");
+                printf("\n-> \033[1;35mAntoine IGLESIAS-TALLON\033[1;0m (Still MIA)");
+                printf("\n-> \033[1;35mAntoine MEUNIER\033[1;0m (No link to the school principal)");
+                printf("\n-> \033[1;35mNassim AININE\033[1;0m (Not an Antoine)");
                 printf("\n+-----------------------------------------------------------+");
                 printf("\n-> ");
                 fflush(stdin);
