@@ -10,7 +10,7 @@ char *scanString(int);
 
 //All the menu because life isn't hard enough as it is.
 t_d_calcontact* menuCreateContact();
-void menuCreateAppointment(t_d_calendar* Calendar);
+t_d_appointment* menuCreateAppointment(t_d_calendar* calendar);
 void menuSeeAllContacts(t_d_calendar*);
 t_d_calcontact* menuSearchContact(t_d_calendar* calendar);
 void menuDeleteContact();

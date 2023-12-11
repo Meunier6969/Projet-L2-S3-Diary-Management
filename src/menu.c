@@ -92,41 +92,52 @@ t_d_calcontact* menuCreateContact()
     return newContact;
 }
 
-void menuCreateAppointment(t_d_calendar* Calendar)
+t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
 {
     char verif[20];
-    char key[70];
-    char yesno[2];
+    char search[70];
     t_d_date date;     
     t_d_length time;    
     t_d_length length;  
     char purpose[100];
-
 
     printf("\033[H\033[J");
     printf("\n+--------------------------------1/8------------------------------------+");
     printf("\nYou choose to create an appointment.");
     printf("\nWhich contact has that appointement ? (enter the key)");
     printf("\n+-----------------------------------------------------------------------+");
-    printf("\n[Enter '0' to quit to the main menu.]");
+    printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
 
-    scanf("%s",key);
+    fflush(stdin);
+    scanf("%70s", search);
 
-    if (strcmp(key,"quit")==0)
+    if (strcmp(search,"quit")==0)
     {
-        return;
+        return NULL;
     }
-    
-    // if key is not in calendar, fuck off
-    //Dunno how to do that to be honest
 
+    t_d_calcontact* contact = searchCalContact(calendar, search);
     //Maybe here a function to search for the contact if yesno is equal to 1 ?
+
+    if (contact == NULL)
+    {
+        printf("\033[H\033[J");
+        printf("\n+----------------------2/2-----------------------+");
+        printf("\nNo informations has been found about that contact.");
+        printf("\n+------------------------------------------------+");
+        printf("\n[Ready to continue ?]");
+        printf("\n-> ");
+
+        fflush(stdin);
+        scanf("%s", verif);
+        return NULL;
+    }
 
 
     printf("\033[H\033[J");
     printf("\n+---------------------------4/8------------------------------------+");
-    printf("\nYou entered %s.", key);
+    printf("\nYou entered %s.", search);
     printf("\nPlease enter the date of the appointment in the format [dd mm yyyy].");
     printf("\n+------------------------------------------------------------------+");
     printf("\n[Enter a negative value such as [-1] to quit to the main menu.]");
@@ -134,9 +145,9 @@ void menuCreateAppointment(t_d_calendar* Calendar)
 
     scanf("%d %d %d",&date.day, &date.month,&date.year);
 
-    if (date.day < 0 && date.month < 0 && date.year < 0)
+    if (date.day < 0 || date.month < 0 || date.year < 0)
     {
-        return;
+        return NULL;
     }
 
 
@@ -149,9 +160,9 @@ void menuCreateAppointment(t_d_calendar* Calendar)
 
     scanf("%d:%d",&time.hours,&time.minutes);
 
-    if ((time.hours < 0 && time.hours > 24) && (time.minutes < 0 && time.minutes > 60))
+    if ((time.hours < 0 || time.hours > 24) || (time.minutes < 0 || time.minutes > 60))
     {
-        return;
+        return NULL;
     }
 
 
@@ -164,9 +175,9 @@ void menuCreateAppointment(t_d_calendar* Calendar)
 
     scanf("%d:%d",&length.hours,&length.minutes);
 
-    if ((length.hours < 0 && length.hours > 24) && (length.minutes < 0 && length.minutes > 60))
+    if ((length.hours < 0 || length.hours > 24) || (length.minutes < 0 || length.minutes > 60))
     {
-        return;
+        return NULL;
     }
 
     printf("\033[H\033[J");
@@ -179,22 +190,22 @@ void menuCreateAppointment(t_d_calendar* Calendar)
 
     scanf("%s",purpose);
 
-
     t_d_appointment* appointment;
     appointment = createAppointment(date, time, length, purpose);
     //addNextAppointment= Should add to the contact except I don't know how to use the key
+    addAppointement(contact->contact, appointment);
 
     printf("\033[H\033[J");
     printf("\n+---------------------------------8/8-----------------------------------+");
     printf("\nThe operation was a sucess, the following appointment has been created :");
     printf("\nDate : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s ", date.day, date.month, date.year, time.hours, time.minutes, length.hours, length.minutes, purpose);
-    printf("\nIt has been associated to the contact with the key [%s]", key);
+    printf("\nIt has been associated to the contact with the key [%s]", search);
     printf("\n+-----------------------------------------------------------------------+");
     printf("\n[Ready to continue ?]\n-> ");
     fflush(stdin);
     scanf("%s", verif);
 
-    return;   //WHERE WE WILL GET THE VALUES
+    return appointment;   //WHERE WE WILL GET THE VALUES
 }
 
 void menuSeeAllContacts(t_d_calendar* calendar)
