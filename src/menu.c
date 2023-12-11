@@ -509,43 +509,33 @@ void menuLoadFile(t_d_calendar** calendar)
 
     scanf("%40s",filename);
 
-    FILE *save;
+    FILE *save = fopen(filename, "r");
     // check if file exists
-    if ((save = fopen(filename, "r")) == NULL)
+    if (save == NULL)
     {
-        printf("non");
+        printf("This file doesn't exist.\n");
         scanf(" ");
         return;
     }
-    // reopen the file to overwrite its content
-    save = fopen(filename, "w");
 
     // for each contact in calendar
-    char name[70] = "";
-    t_d_calcontact* crawler = (*calendar)->head;
-    while (crawler != NULL)
+    char buffer[70];
+    char surname[30];
+    char firstName[30];
+    while (fgets(buffer, sizeof(buffer), save) != NULL)
     {
-        strcpy(name, "");
-        // make the name
-        strcat(name, crawler->contact->contact->surname);
-        strcat(name, " ");
-        strcat(name, crawler->contact->contact->firstName);
-        strcat(name, "\n");
-        // uppercase it
-        for(int i = 0; name[i]; i++)
-            name[i] = toupper(name[i]);
-
-        // add it to a file
-        fprintf(save, name);
-
-        crawler = crawler->next[0];
+        
+        strcpy(surname, strtok(buffer, " "));
+        strcpy(firstName, strtok(buffer, " "));
+        insertCalContact(calendar, createCalContact(createInfo(createContact(strdup(surname), strdup(firstName)))));
     }
+
     fclose(save);
 
     scanf(" ");
     printf("\033[H\033[J");
     printf("\n+-------------------------3/3----------------------+");
-    printf("\nSuccessfully saved the calendar in  [%s].",filename);
+    printf("\nSuccessfully loaded the calendar in  [%s].",filename);
     printf("\nEnter anything to continue.");
     printf("\n+--------------------------------------------------+");
     printf("\n-> ");
