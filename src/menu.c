@@ -215,36 +215,32 @@ void menuSeeAllContacts(t_d_calendar* calendar)
     scanf("%s", verif);
 }
 
-void menuSearchContact()
+t_d_calcontact* menuSearchContact(t_d_calendar* calendar)
 {
-    int menurun=1;
-    int i=0;
-    char letter;
     char search[30];
     printf("\033[H\033[J");
     printf("\n+-----------------------------------------------+");
     printf("\nYou choose to search for a contact.");
-    printf("\nEnter it's name down there one letter at a time :");
+    printf("\nPlease enter it's key (surname_firstname) :");
     printf("\n+-----------------------------------------------+");
     printf("\n-> ");
+
     fflush(stdin);
-    letter=getchar();
-    search[0]=letter;
-    while (menurun==1)
+    scanf("%30s", search);
+
+    t_d_calcontact* contact = searchCalContact(calendar, search);
+
+    if (contact != NULL)
     {
-        if (letter=='.'){menurun=0;}
-        i+=1;
-        printf("\033[H\033[J");
-        printf("\n+----------------------------------------------------------------+");
-        printf("\nEnter the name down there one letter at a time. Write '.' to quit.");
-        printf("\nNumber of names found yet [After entering 3 letters]"); 
-        //Guess we'll do things here
-        printf("\n+----------------------------------------------------------------+");
-        printf("\n-> %s ",search);
-        fflush(stdin);
-        letter=getchar();
-        search[i]=letter;
+        displayInfo(contact->contact);
     }
+    else
+    {
+        printf("Contact does not exist.");
+    }
+    scanf(" ");
+    return contact;
+    
 }
 
 void menuDeleteContact()

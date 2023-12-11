@@ -12,7 +12,7 @@ char *scanString(int);
 t_d_calcontact* menuCreateContact();
 void menuCreateAppointment(t_d_calendar* Calendar);
 void menuSeeAllContacts(t_d_calendar*);
-void menuSearchContact(); //Will also need a searchcontact function.
+t_d_calcontact* menuSearchContact(t_d_calendar* calendar);
 void menuDeleteContact();
 void menuDeleteAppointment(); //Will probably need the calendar in entry.
 void menuSaveFile();

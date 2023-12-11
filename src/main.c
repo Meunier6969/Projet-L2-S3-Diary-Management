@@ -74,7 +74,7 @@ int main()
                 menuSeeAllContacts(Calendar);
                 break;
             case '4':
-                menuSearchContact();
+                menuSearchContact(Calendar);
                 break;
             case '5':
                 menuDeleteContact();
