@@ -429,7 +429,14 @@ void menuSaveFile(t_d_calendar* calendar)
 
     scanf("%s",filename);
 
-    //Probably should make a search for if the file actually already exists.
+    // check if file exists
+        // if yes, ask if overwrite
+        // if not, go back
+    // for each contact in calendar
+        // make the name
+        // uppercase it
+        // add it to a file
+
     printf("\033[H\033[J");
     printf("\n+-------------------------3/3----------------------+");
     printf("\nSuccessfully saved the calendar [%s] in PLACEHOLDER.",filename);           //PLACEHOLDER HERE
@@ -437,7 +444,6 @@ void menuSaveFile(t_d_calendar* calendar)
     printf("\n+--------------------------------------------------+");
     printf("\n-> ");
     scanf("%s", verif);
-    //Does the thing
 }
 
 void menuLoadFile(t_d_calendar** calendar)
