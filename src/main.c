@@ -65,7 +65,7 @@ int main()
             case '1':
                 t_d_calcontact* newContact;
                 newContact = menuCreateContact();
-                insertCalContact(&Calendar, newContact);  //Need fixin'
+                insertCalContact(&Calendar, newContact);  //Need fixin' ?
                 break;
             case '2':
                 menuCreateAppointment(Calendar);

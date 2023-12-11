@@ -37,6 +37,11 @@ void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
         return;
     }
 
+    if (contact == NULL)
+    {
+        return;
+    }
+
     // find the place to insert
     t_d_calcontact *crawler, *previous;
     crawler = (*calendar)->head;
