@@ -131,9 +131,9 @@ void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
     }
 }
 
-void deleteCalContact(t_d_calendar* calendar, t_d_contactinfo* contact)
+void deleteCalContact(t_d_calendar** calendar, t_d_calcontact* contact)
 {
-    
+    free(contact);
 }
 
 t_d_calcontact* searchCalContact(t_d_calendar* calendar, char* key)

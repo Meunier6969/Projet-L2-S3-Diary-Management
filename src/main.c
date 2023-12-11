@@ -37,7 +37,7 @@ int main()
                 menuSearchContact(Calendar);
                 break;
             case '5':
-                menuDeleteContact();
+                menuDeleteContact(&Calendar);
                 break;
             case '6':
                 menuDeleteAppointment();

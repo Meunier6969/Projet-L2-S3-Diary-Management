@@ -23,8 +23,7 @@ t_d_calendar* createCalendar(int maxLevel);
 t_d_calcontact* createCalContact(t_d_contactinfo* contact);
 
 void insertCalContact(t_d_calendar** calendar, t_d_calcontact* contact);
-void changeCalContact(t_d_calcontact* contact, int newLevel);
-void deleteCalContact(t_d_calendar* calendar, t_d_contactinfo* contact);
+void deleteCalContact(t_d_calendar** calendar, t_d_calcontact* contact);
 
 t_d_calcontact* searchCalContact(t_d_calendar* calendar, char* key);
 

@@ -272,61 +272,61 @@ t_d_calcontact* menuSearchContact(t_d_calendar* calendar)
     
 }
 
-void menuDeleteContact()
+void menuDeleteContact(t_d_calendar **Calendar)
 {
     char verif[10];
-    char name[30];
-    char surname[30];
+    char search[30];
     printf("\033[H\033[J");
-    printf("\n+------------------1/3-----------------+");
+    printf("\n+--------------------------------1/3-----------------------------+");
     printf("\nYou choose to delete a contact.");
-    printf("\nPlease enter the name of the contact.");
-    printf("\n+--------------------------------------+");
+    printf("\nPlease enter the name of the contact in the format [name_surname].");
+    printf("\n+----------------------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
-    scanf("%s",name);
+    scanf("%s",search);
 
-    if (strcmp(name,"quit")==0)
+
+    t_d_calcontact* contact = searchCalContact(*Calendar, search);
+
+    if (contact != NULL)
     {
+        printf("\033[H\033[J");
+        printf("\n+-------------------------------2/3-------------------------------+");
+        printf("\nAre you really sure that you want to delete the contact [%s] ?", search);
+        printf("\n+-----------------------------------------------------------------+");
+        printf("\n[Enter 'quit' to quit to the main menu.]");
+        printf("\n-> ");
+
+        scanf("%s",verif);
+
+        if (strcmp(verif,"quit")==0)
+        {
+            return;
+        }
+
+        deleteCalContact(Calendar,contact);
+
+        printf("\033[H\033[J");
+        printf("\n+--------------------------3/3-------------------------+");
+        printf("\nThe contact [%s] has been successfuly deleted.", search);
+        printf("\n+------------------------------------------------------+");
+        printf("\n[Ready to continue ?]\n-> ");
+        fflush(stdin);
+        scanf("%s",verif);
         return;
     }
-
-    printf("\033[H\033[J");
-    printf("\n+----------------------------2/3-----------------------------+");
-    printf("\nYou entered [%s], please enter the surname of the contact now.",name);
-    printf("\n+------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the main menu.]");
-    printf("\n-> ");
-    scanf("%s",surname);
-
-    if (strcmp(surname,"quit")==0)
+    else
     {
-        return;
+        printf("\033[H\033[J");
+        printf("\n+----------------------2/2-----------------------+");
+        printf("\nNo informations has been found about that contact.");
+        printf("\n+------------------------------------------------+");
+        printf("\n[Ready to continue ?]");
+        printf("\n-> ");
+
+        fflush(stdin);
+        scanf("%s", verif);
     }
-
-    printf("\033[H\033[J");
-    printf("\n+-------------------------------3/4-------------------------------+");
-    printf("\nAre you really sure that you want to delete the contact [%s] [%s] ?",name,surname);
-    printf("\n+-----------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the main menu.]");
-    printf("\n-> ");
-
-    scanf("%s",verif);
-
-    if (strcmp(verif,"quit")==0)
-    {
-        return;
-    }
-
-    //We need to check if the contact actually exists.
-    printf("\033[H\033[J");
-    printf("\n+--------------------------4/4-------------------------+");
-    printf("\nThe contact [%s] [%s] has been successfuly deleted.",name,surname);
-    printf("\n+------------------------------------------------------+");
-    printf("\n[Ready to continue ?]\n-> ");
-    fflush(stdin);
-    scanf("%s",verif);
-    return;   //ICI POUR LE RETURN
 }
 
 void menuDeleteAppointment()
@@ -575,7 +575,7 @@ void menuInfo()
             case '2':
                 printf("\033[H\033[J");
                 printf("\n+---------------------------------------------------+");
-                printf("\nYeah calculations, yeahhhh");
+                printf("\nThe calculations for searching for a contact :");
                 printf("\n+---------------------------------------------------+");
                 printf("\n-> ");
                 fflush(stdin);
