@@ -30,7 +30,7 @@ int main()
                 // Name and Surname are broken, key isn't somehow ?
                 break;
             case '2':
-                menuCreateAppointment();
+                menuCreateAppointment(&Calendar);
                 break;
             case '3':
                 menuSeeAllContacts(Calendar);
