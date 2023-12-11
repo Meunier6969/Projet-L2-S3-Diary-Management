@@ -54,7 +54,6 @@ dkms.conf
 # Other
 .vscode
 .idea
-*.txt
 *.bat
 *.sh
 a.exe.stackdump
