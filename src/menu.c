@@ -471,7 +471,6 @@ void menuSaveFile(t_d_calendar* calendar)
     }
     fclose(save);
 
-    scanf(" ");
     printf("\033[H\033[J");
     printf("\n+-------------------------3/3----------------------+");
     printf("\nSuccessfully saved the calendar in  [%s].",filename);
@@ -532,10 +531,9 @@ void menuLoadFile(t_d_calendar** calendar)
 
     fclose(save);
 
-    scanf(" ");
     printf("\033[H\033[J");
     printf("\n+-------------------------3/3----------------------+");
-    printf("\nSuccessfully loaded the calendar in  [%s].",filename);
+    printf("\nSuccessfully loaded the calendar");
     printf("\nEnter anything to continue.");
     printf("\n+--------------------------------------------------+");
     printf("\n-> ");
