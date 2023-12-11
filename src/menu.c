@@ -217,12 +217,13 @@ void menuSeeAllContacts(t_d_calendar* calendar)
 
 t_d_calcontact* menuSearchContact(t_d_calendar* calendar)
 {
+    char verif[2];
     char search[30];
     printf("\033[H\033[J");
-    printf("\n+-----------------------------------------------+");
-    printf("\nYou choose to search for a contact.");
-    printf("\nPlease enter it's key (surname_firstname) :");
-    printf("\n+-----------------------------------------------+");
+    printf("\n+-------------------------1/2---------------------------+");
+    printf("\nYou chose to search for a contact.");
+    printf("\nPlease enter it's key in the format [surname_firstname] :");
+    printf("\n+-------------------------------------------------------+");
     printf("\n-> ");
 
     fflush(stdin);
@@ -232,13 +233,29 @@ t_d_calcontact* menuSearchContact(t_d_calendar* calendar)
 
     if (contact != NULL)
     {
+        printf("\033[H\033[J");
+        printf("\n+----------------------2/2------------------------+");
+        printf("\nHere are the informations found about the contact :\n");
         displayInfo(contact->contact);
+        printf("+-------------------------------------------------+");
+        printf("\n[Ready to continue ?]");
+        printf("\n-> ");
+
+        fflush(stdin);
+        scanf("%s", verif);
     }
     else
     {
-        printf("Contact does not exist.");
+        printf("\033[H\033[J");
+        printf("\n+----------------------2/2-----------------------+");
+        printf("\nNo informations has been found about that contact.");
+        printf("\n+------------------------------------------------+");
+        printf("\n[Ready to continue ?]");
+        printf("\n-> ");
+
+        fflush(stdin);
+        scanf("%s", verif);
     }
-    scanf(" ");
     return contact;
     
 }
