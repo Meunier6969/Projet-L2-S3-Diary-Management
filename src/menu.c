@@ -89,7 +89,6 @@ t_d_calcontact* menuCreateContact()
     scanf("%s",verif);
 
     t_d_calcontact* newContact = createCalContact(createInfo(createContact(name, surname))); 
-
     return newContact;
 }
 
@@ -117,7 +116,7 @@ void menuCreateAppointment()
     {
         return;
     }
-
+    
     // if key is not in calendar, fuck off
 
     //Maybe here a function to search for the contact if yesno is equal to 1 ?
@@ -193,8 +192,14 @@ void menuCreateAppointment()
 void menuSeeAllContacts(t_d_calendar* calendar)
 {
     char verif[20];
-    
+    printf("\033[H\033[J");
+    printf("\n+--------------------------------7/8-------------------------------------+");
+    printf("\nYou chose to see all the contacts.");
+    printf("\nHere is the list of contact, with their associated [key] :\n");
     showCalendar(calendar);
+    printf("\n+------------------------------------------------------------------------+");
+    printf("\n[Ready to continue ?]");
+    printf("\n-> ");
 
     fflush(stdin);
     scanf("%s", verif);
@@ -465,7 +470,7 @@ void menuInfo()
                 printf("\n+-----------------------------------------------------------+");
                 printf("\nMade for an Efrei Project by :");           
                 printf("\n-> Antoine IGLESIAS-TALLON (Still MIA)");
-                printf("\n-> Antoine MEUNIER (No link to the school principal (yet...))");
+                printf("\n-> Antoine MEUNIER (No link to the school principal)");
                 printf("\n-> Nassim AININE (Not an Antoine)");
                 printf("\n+-----------------------------------------------------------+");
                 printf("\n-> ");
