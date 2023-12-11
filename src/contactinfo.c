@@ -45,7 +45,7 @@ void displayInfo(t_d_contactinfo* info)
 
     displayContact(*info->contact);
     printf("Known as [%s]\n", info->key);
-    printf("Appointments : ");
+    printf("Appointments : \n");
     showAppointements(info->firstAppointment);
 }
 
