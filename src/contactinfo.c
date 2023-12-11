@@ -51,7 +51,7 @@ void displayInfo(t_d_contactinfo* info)
 
 void displayInfoShort(t_d_contactinfo* info)
 {
-    if (info == NULL)
+    if (info == NULL || info->contact == NULL)
     {
         printf("Contact Info doesn't exist.\n");
         return;
@@ -62,6 +62,8 @@ void displayInfoShort(t_d_contactinfo* info)
         printf(" - Has Appointments");
     printf("\n");
 }
+
+
 
 void addAppointement(t_d_contactinfo* info, t_d_appointment* appointment)
 {

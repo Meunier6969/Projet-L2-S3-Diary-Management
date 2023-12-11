@@ -88,7 +88,7 @@ t_d_calcontact* menuCreateContact()
     fflush(stdin);
     scanf("%s",verif);
 
-    t_d_calcontact* newContact = createCalContact(createInfo(createContact(name, surname))); 
+    t_d_calcontact* newContact = createCalContact(createInfo(createContact(strdup(name), strdup(surname)))); 
     return newContact;
 }
 
@@ -193,7 +193,7 @@ void menuSeeAllContacts(t_d_calendar* calendar)
 {
     char verif[20];
     printf("\033[H\033[J");
-    printf("\n+--------------------------------7/8-------------------------------------+");
+    printf("\n+------------------------------------------------------------------------+");
     printf("\nYou chose to see all the contacts.");
     printf("\nHere is the list of contact, with their associated [key] :\n");
     showCalendar(calendar);

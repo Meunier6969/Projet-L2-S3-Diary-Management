@@ -155,6 +155,7 @@ void showCalendar(t_d_calendar* calendar)
     }
 }
 
+
 void displayCalContact(t_d_calcontact* contact)
 {
     if (contact == NULL)
