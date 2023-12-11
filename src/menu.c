@@ -192,7 +192,7 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     scanf("%s",purpose);
 
     t_d_appointment* appointment;
-    appointment = createAppointment(date, time, length, purpose);
+    appointment = createAppointment(date, time, length, strdup(purpose));
     //addNextAppointment= Should add to the contact except I don't know how to use the key
     addAppointement(contact->contact, appointment);
 
