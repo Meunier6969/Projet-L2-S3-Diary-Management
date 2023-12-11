@@ -15,8 +15,8 @@ void menuSeeAllContacts(t_d_calendar*);
 t_d_calcontact* menuSearchContact(t_d_calendar* calendar);
 void menuDeleteContact();
 void menuDeleteAppointment(); //Will probably need the calendar in entry.
-void menuSaveFile();
-void menuLoadFile();
+void menuSaveFile(t_d_calendar* calendar);
+void menuLoadFile(t_d_calendar** calendar);
 void menuInfo();
 
 #endif

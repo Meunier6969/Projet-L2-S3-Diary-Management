@@ -401,7 +401,7 @@ void menuDeleteAppointment()
     return;   //ICI POUR LE RETURN
 }
 
-void menuSaveFile()
+void menuSaveFile(t_d_calendar* calendar)
 {
     char answer[2];
     char filename[20];
@@ -440,7 +440,7 @@ void menuSaveFile()
     //Does the thing
 }
 
-void menuLoadFile()
+void menuLoadFile(t_d_calendar** calendar)
 {
     char answer[2];
     char filename[20];
