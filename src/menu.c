@@ -28,16 +28,6 @@ void displayMenu()
     printf("\n-> ");
 }
 
-void menuQuit()
-{
-    printf("\033[H\033[J");
-    printf("\n+---------------------------------------------------------------+");
-    printf("\nYou choose to quit or an error occured, press Enter to continue.");
-    printf("\n+---------------------------------------------------------------+");
-    fflush(stdin);
-    while( getchar() != '\n' );
-}
-
 char *scanString(int lenght)
 {
     char* buffer = malloc(lenght * sizeof(char));
@@ -206,7 +196,7 @@ t_d_appointment* menuCreateAppointment(t_d_calendar* calendar)
     fflush(stdin);
     scanf("%s", verif);
 
-    return appointment;   //WHERE WE WILL GET THE VALUES
+    return appointment;
 }
 
 void menuSeeAllContacts(t_d_calendar* calendar)
@@ -329,43 +319,49 @@ void menuDeleteContact(t_d_calendar **Calendar)
     }
 }
 
-void menuDeleteAppointment()
+void menuDeleteAppointment(t_d_calendar *calendar)
 {
     char verif[10];
+    char key[30];
     int id;
-    char name[30];
-    char surname[30];
+
     printf("\033[H\033[J");
     printf("\n+------------------------1/5----------------------+");
     printf("\nYou choose to delete an appointment.");
-    printf("\nPlease enter the name of the contact's appointment.");
+    printf("\nPlease enter the key of the contact's appointment. (firstname_surname)");
     printf("\n+-------------------------------------------------+");
     printf("\n[Enter 'quit' to quit to the main menu.]");
     printf("\n-> ");
-    scanf("%s",name);
+    
+    fflush(stdin);
+    scanf("%30s",key);
 
-    if (strcmp(name,"quit")==0)
+    if (strcmp(key,"quit")==0)
     {
         return;
     }
 
-    printf("\033[H\033[J");
-    printf("\n+-------------------------------------2/5----------------------------------+");
-    printf("\nYou entered [\033[1;35m%s\033[1;0m], please enter the surname of the contact's appointment now.",name);
-    printf("\n+--------------------------------------------------------------------------+");
-    printf("\n[Enter 'quit' to quit to the main menu.]");
-    printf("\n-> ");
-    scanf("%s",surname);
+    t_d_calcontact* contact = searchCalContact(calendar, key);
 
-    if (strcmp(surname,"quit")==0)
+    if (contact == NULL)
     {
+        printf("\033[H\033[J");
+        printf("\n+------------------------------------------------+");
+        printf("\nNo informations has been found about that contact.");
+        printf("\n+------------------------------------------------+");
+        printf("\n[Ready to continue ?]");
+        printf("\n-> ");
+
+        fflush(stdin);
+        scanf(" ");
         return;
     }
 
     printf("\033[H\033[J");
     printf("\n+-----------------------------------------------3/5-----------------------------------------+");
-    printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [\033[1;35m%s\033[1;0m] [\033[1;35m%s\033[1;0m] :",name,surname);
+    printf("\nPlease enter the number ID of the appointment you wish to delete from the contact [%s] :\n",key);
     //WE WILL NEED TO SHOW ALL THE APPOINTMENT OF THE CONTACT WITH A NUMBER NEXT TO IT TO IDENTIFY IT
+    displayInfo(contact->contact);
     printf("\n+-------------------------------------------------------------------------------------------+");
     printf("\n[Enter a negative number to quit to the main menu.]");
     printf("\n-> ");
@@ -390,6 +386,8 @@ void menuDeleteAppointment()
     {
         return;
     }
+
+    deleteAppointment(contact->contact->firstAppointment, id);
 
     //We need to check if the contact actually exists.
     printf("\033[H\033[J");

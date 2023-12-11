@@ -63,8 +63,6 @@ void displayInfoShort(t_d_contactinfo* info)
     printf("\n");
 }
 
-
-
 void addAppointement(t_d_contactinfo* info, t_d_appointment* appointment)
 {
     addNextAppointment(&info->firstAppointment, appointment);

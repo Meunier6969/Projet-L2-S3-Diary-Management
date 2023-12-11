@@ -91,14 +91,16 @@ void showAppointements(t_d_appointment* head)
         return;
     }
 
+    int i = 1;
     do
     {
-        printf("+------------------------------------------+\n");
+        printf("+-------------------%2d---------------------+\n", i);
         printf("Date : %d/%d/%d\nDate Time : %d:%d\nAppointment Length : %d:%d\nPurpose : %s\n",
             curapp->date.day, curapp->date.month, curapp->date.year,
             curapp->appointmentTime.hours, curapp->appointmentTime.minutes,
             curapp->appointmentLength.hours, curapp->appointmentLength.minutes,
             curapp->purpose);
         curapp = curapp->next;
+        i++;
     } while (curapp != NULL);
 }

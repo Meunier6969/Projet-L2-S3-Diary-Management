@@ -40,7 +40,7 @@ int main()
                 menuDeleteContact(&Calendar);
                 break;
             case '6':
-                menuDeleteAppointment();
+                menuDeleteAppointment(Calendar);
                 break;
             case '7':
                 menuSaveFile(Calendar);
